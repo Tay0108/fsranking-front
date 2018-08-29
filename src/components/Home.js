@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import Loader from 'react-loader-spinner';
 
 export class Home extends Component {
   constructor(props) {
@@ -7,26 +8,36 @@ export class Home extends Component {
   }
 
   componentDidMount() {
-    fetch('https://api.github.com/users')
+    setTimeout(function() {
+      fetch('https://api.github.com/users')
       .then(response => response.json())
       .then(json => this.setState({players: json}));
+    }.bind(this), 6000);
   }
 
   render() {
     let players = this.state.players || [];
     return (
-      <div>
+      <div className="home">
         <h1>Ranking globalny</h1>
-
-        <table className="home-table">
-          <tbody>
+        {
+        players.length === 0 ?
+        (<Loader 
+          type="Puff"
+          color="#010021"
+          height="100"	
+          width="100"
+        />)
+        :
+        (<table className="home-table">
+          <thead>
             <tr>
               <th>Pozycja</th>
               <th>Zawodnik</th>
               <th>Trend</th>
               <th>Points</th>
             </tr>
-          </tbody>
+          </thead>
           <tbody>
             {
               players.map((u, id) =>
@@ -39,7 +50,8 @@ export class Home extends Component {
               )
             }
           </tbody>
-        </table>
+        </table>)
+        }
       </div>
     )
   }

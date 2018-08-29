@@ -50,21 +50,45 @@ body {
   transition: all 300ms ease-in-out;
 }
 
+.home {
+  text-align: center;
+}
+
 .home-table {
-  border-collapse: collapse;
-  width: 1000px;
-  margin: 0 auto;
-  text-align: left;
+  display: block;
+  max-width: 800px;
+  border: solid 5px black;
+  box-shadow: 3px 3px 10px black;
+  margin: 10px auto;
+}
+
+.home-table tr,
+.home-table thead,
+.home-table tbody {
+  display: block;
+}
+
+.home-table tr {
+  padding: 10px 20px;
+  border-bottom: 1px solid grey;
+}
+
+.home-table tr::after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 .home-table th, .home-table td {
-  height: 35px;
-  border-bottom: solid 1px grey;
-  padding: 15px;
+  display: block;
+  width: 25%;
+  float: left;
+  padding: 0;
+  text-align: center;
 }
 
 .home-table tr:hover {
-  background-color: lightgrey;
+  background-color: #eee;
 }
 
 .footer {
