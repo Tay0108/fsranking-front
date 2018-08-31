@@ -1,0 +1,4 @@
+deploy:
+    script :    git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/fsranking-front.git
+
+                git push -f heroku master
