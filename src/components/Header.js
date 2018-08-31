@@ -6,11 +6,11 @@ export class Header extends Component {
     return (
       <div className="header">
         <div className="header-container">
-          <h1>Futball spielen</h1>
+          <h1>FSRanking</h1>
 
           <ul>
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/about">About</Link></li>
+              <li><Link to="/">Ranking</Link></li>
+              <li><Link to="/about">Autorzy</Link></li>
           </ul>
         </div>
       </div>

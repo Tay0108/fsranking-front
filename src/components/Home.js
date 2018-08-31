@@ -8,18 +8,16 @@ export class Home extends Component {
   }
 
   componentDidMount() {
-    setTimeout(function() {
-      fetch('https://api.github.com/users')
+    fetch('http://localhost:8080/mock/players')
       .then(response => response.json())
       .then(json => this.setState({players: json}));
-    }.bind(this), 6000);
   }
 
   render() {
     let players = this.state.players || [];
     return (
       <div className="home">
-        <h1>Ranking globalny</h1>
+        <h1>Ranking Polski Battle</h1>
         {
         players.length === 0 ?
         (<Loader 
@@ -32,10 +30,10 @@ export class Home extends Component {
         (<table className="home-table">
           <thead>
             <tr>
-              <th>Pozycja</th>
+              <th>Id</th>
               <th>Zawodnik</th>
-              <th>Trend</th>
-              <th>Points</th>
+              <th>Narodowosć</th>
+              <th>Punkty</th>
             </tr>
           </thead>
           <tbody>
@@ -43,9 +41,9 @@ export class Home extends Component {
               players.map((u, id) =>
                 (<tr key={id}>
                   <td>{u.id}</td>
-                  <td>{u.login}</td>
-                  <td>{u.type}</td>
-                  <td>{u.id}</td>
+                  <td>{u.nick}</td>
+                  <td>{u.nationality}</td>
+                  <td>{u.points}</td>
                 </tr>)
               )
             }
