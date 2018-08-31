@@ -8,7 +8,7 @@ export class Home extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:8080/mock/players')
+    fetch('http://fsranking.herokuapp.com/mock/players')
       .then(response => response.json())
       .then(json => this.setState({players: json}));
   }
