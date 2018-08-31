@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Loader from 'react-loader-spinner';
 
+// Deployment test comment;
 export class Home extends Component {
   constructor(props) {
     super(props);
