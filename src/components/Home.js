@@ -9,7 +9,7 @@ export class Home extends Component {
   }
 
   componentDidMount() {
-    fetch('http://fsranking.herokuapp.com/mock/players')
+    fetch('https://fsranking.herokuapp.com/mock/players')
       .then(response => response.json())
       .then(json => this.setState({players: json}));
   }
