@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Loader from 'react-loader-spinner';
+import Loader from './Loader';
 
 // Deployment test comment;
 export class Home extends Component {
@@ -21,8 +21,7 @@ export class Home extends Component {
         <h1>Ranking Polski Battle</h1>
         {
         players.length === 0 ?
-        (<Loader 
-          type="Puff"
+        (<Loader
           color="#010021"
           height="100"	
           width="100"
