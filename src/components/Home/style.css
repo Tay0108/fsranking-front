@@ -1,0 +1,40 @@
+.home {
+    text-align: center;
+}
+
+.home-table {
+    display: block;
+    max-width: 800px;
+    border: solid 5px black;
+    box-shadow: 3px 3px 10px black;
+    margin: 10px auto;
+}
+
+.home-table tr,
+.home-table thead,
+.home-table tbody {
+    display: block;
+}
+
+.home-table tr {
+    padding: 10px 20px;
+    border-bottom: 1px solid grey;
+}
+
+.home-table tr::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.home-table th, .home-table td {
+    display: block;
+    width: 25%;
+    float: left;
+    padding: 0;
+    text-align: center;
+}
+
+.home-table tr:hover {
+    background-color: #eee;
+}

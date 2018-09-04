@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Loader from './Loader';
+import Loader from '../Loader/Loader';
+import './style.css';
 
-// Deployment test comment;
 export class Home extends Component {
   constructor(props) {
     super(props);
