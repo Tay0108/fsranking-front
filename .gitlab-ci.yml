@@ -10,4 +10,4 @@ deploy:
     - master
   stage: deploy
   script:
-    - git push -f heroku master
+    - git subtree push --prefix output heroku master
