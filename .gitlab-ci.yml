@@ -1,3 +1,5 @@
+image: node:8.9.0
+
 before_script:
   - npm install
   - git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/fsranking-front.git
