@@ -23,8 +23,8 @@ export class Home extends Component {
         players.length === 0 ?
         (<Loader
           color="#010021"
-          height="100"	
-          width="100"
+          height="200"	
+          width="200"
         />)
         :
         (<table className="home-table">
