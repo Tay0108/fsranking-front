@@ -1,22 +1,25 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import './style.css';
+import './header.scss';
 
-export class Header extends Component {
+export class AppHeader extends Component {
+
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
-      <div className="header">
-        <div className="header-container">
-          <h1>FSRanking</h1>
-
-          <ul>
-              <li><Link to="/">Ranking</Link></li>
-              <li><Link to="/about">Autorzy</Link></li>
-          </ul>
+      <header className="app-header">
+        <img className="app-header__logo" src="/img/app-logo.png" />
+        <div className="app-header__title-wrapper">
+          <h1 className="app-header__title">FSRanking</h1>
+          <span className="app-header__subtitle">Polski Ranking Freestyle Football</span>
         </div>
-      </div>
+        <a href="/">home</a>           
+        <a href="/about">about</a>           
+      </header>
     )
   }
 }
 
-export default Header;
+export default AppHeader;

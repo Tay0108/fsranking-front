@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
-import './style.css';
+import './about.scss';
 
 export class About extends Component {
+  
+    constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
-      <div className="about">
-        <h1>About Bobsoft Company</h1>
-        <p>Visit our website: bobsoft.me</p>
-      </div>
+      <section>
+      </section>
     )
   }
 }
 
 export default About;
-

@@ -1,0 +1,56 @@
+.ranking {
+    width: 800px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+
+    .ranking__top-list {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+    }
+
+    .ranking__table {
+        width: 100%;
+        text-align: center;
+    }
+
+    .ranking__header {
+        background-color: rgba(80, 111, 148, 0.7);
+        box-sizing: border-box;
+    }
+
+    .ranking__header th {
+        height: 50px;
+        vertical-align: middle;
+        font-weight: bold;
+    }
+
+    .ranking__body {
+        font-size: 1.2em;
+        font-family: 'Roboto';
+        font-weight: 500;
+    }
+
+    .ranking__item {
+        box-sizing: border-box;
+        height: 30px;
+    }
+
+    .ranking__item td {
+        vertical-align: middle;
+    }
+
+    .ranking__item:nth-child(2n-1) {
+        background-color: rgba(199,199,200,0.7);
+    }
+
+    .ranking__item:nth-child(2n) {
+        background-color: rgba(168,168,169,0.7);
+    }
+
+    .ranking__flag {
+        width: 25px;
+        height: auto;
+    }
+    
+}

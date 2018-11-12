@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
-import './style.css';
+import './footer.scss';
 
 export class Footer extends Component {
+
+    constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
-      <div className="footer">
-        <p>Created by Bobsoft &copy;</p>
-        <p>Cracow 2018</p>
-      </div>
+      <footer className="footer">
+        <p className="footer__text">Copyright &copy; Bobsoft 2018</p>
+      </footer>
     )
   }
 }
