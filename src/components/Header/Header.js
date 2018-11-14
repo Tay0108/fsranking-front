@@ -5,15 +5,18 @@ export class AppHeader extends Component {
 
   render() {
     return (
-      <header className="app-header">
-        <img className="app-header__logo" src="/img/app-logo.png" alt="app-logo" />
-        <div className="app-header__title-wrapper">
-          <h1 className="app-header__title">FSRanking</h1>
-          <span className="app-header__subtitle">Polski Ranking Freestyle Football</span>
-        </div>
-        <a href="/">home</a>           
-        <a href="/about">about</a>           
-      </header>
+      <div className="header-wrapper">
+        <header className="app-header">
+          <img className="app-header__logo" src="/img/app-logo.png" alt="app-logo" />
+          <div className="app-header__title-wrapper">
+            <h1 className="app-header__title">FSRanking</h1>
+            <span className="app-header__subtitle">Polski Ranking Freestyle Football</span>
+          </div>
+          <form className="app-header__search-form">
+            <input type="text" placeholder="Wyszukaj zawodnika..." />
+          </form>
+        </header>
+      </div>
     )
   }
 }
