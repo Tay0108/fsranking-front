@@ -62,7 +62,14 @@ export class Ranking extends Component {
               {
                 players.map((u, id) =>
                   (
-                    <tr key={id} className="ranking__item"><td>{place++}.</td><td>{u.nick}</td><td>{u.age}</td><td><img className="ranking__flag" src={'/img/flags/poland.svg'} alt="Poland" /></td><td>{u.point}</td><td>up</td></tr>
+                    <tr key={id} className="ranking__row">
+                    <td><a className="ranking__link" href={'/player/' + id}>{place++}.</a></td>
+                    <td><a className="ranking__link" href={'/player/' + id}>{u.nick}</a></td>
+                    <td><a className="ranking__link" href={'/player/' + id}>{u.age}</a></td>
+                    <td><a className="ranking__link" href={'/player/' + id}><img className="ranking__flag" src={'/img/flags/poland.svg'} alt="Poland" /></a></td>
+                    <td><a className="ranking__link" href={'/player/' + id}>{u.point}</a></td>
+                    <td><a className="ranking__link" href={'/player/' + id}>up</a></td>
+                    </tr>
                   )
                 )
               }

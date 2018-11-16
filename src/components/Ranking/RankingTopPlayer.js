@@ -3,10 +3,6 @@ import './rankingtopplayer.scss';
 
 export class RankingTopPlayer extends Component {
 
-    constructor(props) {
-    super(props);
-  }
-
   render() {
 
     let imageStyle = {
