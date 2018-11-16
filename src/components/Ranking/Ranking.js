@@ -8,50 +8,26 @@ export class Ranking extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+    };
   }
 
   componentDidMount() {
     fetch('https://fsranking.herokuapp.com/mock/players')
       .then(response => response.json())
-      .then(json => this.setState({ players: json }));
-
+      .then(json => this.setState({ players: json })); 
   }
 
   render() {
 
-    let players = this.state.players || [];
-    players.sort((a, b) => -1 * (a.points - b.points));
-
     let top3 = [];
+    let players = [];
 
-    top3.push(
-      {
-        color: '#ffd700',
-        name: 'Szymon Skalski',
-        points: '2053',
-        image: 'szymo.png',
-        nationality: 'pl'
-      }
-    );
-
-    top3.push({
-      color: '#c0c0c0',
-      name: 'Pawel Skora',
-      points: '1023',
-      image: 'skora.png',
-      nationality: 'pl'
+    if(this.state.players != null) {
+      this.state.players.sort((a, b) => -1 * (a.point - b.point))
+      top3 = this.state.players.slice(0,3);
+      players = this.state.players.slice(3, this.state.players.length);
     }
-    );
-
-    top3.push({
-      color: '#905923',
-      name: 'Mateusz Odrzygozdz',
-      points: '543',
-      image: 'lotar.png',
-      nationality: 'pl'
-    }
-    );
 
     let place = 4;
 
@@ -67,9 +43,9 @@ export class Ranking extends Component {
         (<section className="ranking">
 
           <ul className="ranking__top-list">
-            <li><RankingTopPlayer player={top3[1]} /></li>
-            <li><RankingTopPlayer player={top3[0]} /></li>
-            <li><RankingTopPlayer player={top3[2]} /></li>
+            <li><RankingTopPlayer player={top3[1]} color='#c0c0c0' /></li>
+            <li><RankingTopPlayer player={top3[0]} color='#ffd700' /></li>
+            <li><RankingTopPlayer player={top3[2]} color='#905923' /></li>
           </ul>
           <table className="ranking__table">
             <thead className="ranking__header">
@@ -86,7 +62,7 @@ export class Ranking extends Component {
               {
                 players.map((u, id) =>
                   (
-                    <tr key={id} className="ranking__item"><td>{place++}.</td><td>{u.nick}</td><td>24</td><td><img className="ranking__flag" src={'/img/flags/pl.png'} alt="Poland" /></td><td>{u.points}</td><td>up</td></tr>
+                    <tr key={id} className="ranking__item"><td>{place++}.</td><td>{u.nick}</td><td>{u.age}</td><td><img className="ranking__flag" src={'/img/flags/poland.svg'} alt="Poland" /></td><td>{u.point}</td><td>up</td></tr>
                   )
                 )
               }

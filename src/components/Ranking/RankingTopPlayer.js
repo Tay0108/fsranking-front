@@ -5,17 +5,16 @@ export class RankingTopPlayer extends Component {
 
     constructor(props) {
     super(props);
-    this.player = props.player;
   }
 
   render() {
 
     let imageStyle = {
-      border: '10px solid' + this.player.color
+      border: '10px solid' + this.props.color
     };
 
     let pointsStyle = {
-      backgroundColor: this.player.color
+      backgroundColor: this.props.color
     }
 
     console.log(this.props.color);
@@ -23,10 +22,10 @@ export class RankingTopPlayer extends Component {
     return (
 
      <div className="top-player">
-        <img className="top-player__image" style={imageStyle} src={'/img/players/' + this.player.image} alt="zawodnik"/>
-        <span className="top-player__name">{this.player.name}</span>
-        <img className="top-player__flag" src={'/img/flags/' + this.player.nationality + '.png'} alt="Poland"/>
-        <div className="top-player__points" style={pointsStyle}>{this.player.points}</div>
+        <img className="top-player__image" style={imageStyle} src={'/img/players/' + this.props.player.image} alt="zawodnik"/>
+        <span className="top-player__name">{this.props.player.nick}</span>
+        <img className="top-player__flag" src={'/img/flags/' + this.props.player.nationality + '.svg'} alt="Poland"/>
+        <div className="top-player__points" style={pointsStyle}>{this.props.player.point}</div>
      </div> 
     )
   }
