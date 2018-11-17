@@ -19,7 +19,7 @@ export class RankingTopPlayer extends Component {
 
      <div className="top-player">
         <img className="top-player__image" style={imageStyle} src={'/img/players/' + this.props.player.image} alt="zawodnik"/>
-        <span className="top-player__name">{this.props.player.nick}</span>
+        <span className="top-player__name">{this.props.player.firstName + ' ' + this.props.player.lastName}</span>
         <img className="top-player__flag" src={'/img/flags/' + this.props.player.nationality + '.svg'} alt="Poland"/>
         <div className="top-player__points" style={pointsStyle}>{this.props.player.point}</div>
      </div> 

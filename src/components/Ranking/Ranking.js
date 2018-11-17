@@ -13,7 +13,7 @@ export class Ranking extends Component {
   }
 
   componentDidMount() {
-    fetch('https://fsranking.herokuapp.com/mock/players')
+    fetch('https://fsranking.herokuapp.com/players')
       .then(response => response.json())
       .then(json => this.setState({ players: json })); 
   }
@@ -64,7 +64,7 @@ export class Ranking extends Component {
                   (
                     <tr key={id} className="ranking__row">
                     <td><a className="ranking__link" href={'/player/' + id}>{place++}.</a></td>
-                    <td><a className="ranking__link" href={'/player/' + id}>{u.nick}</a></td>
+                    <td><a className="ranking__link" href={'/player/' + id}>{u.firstName + ' ' + u.lastName}</a></td>
                     <td><a className="ranking__link" href={'/player/' + id}>{u.age}</a></td>
                     <td><a className="ranking__link" href={'/player/' + id}><img className="ranking__flag" src={'/img/flags/poland.svg'} alt="Poland" /></a></td>
                     <td><a className="ranking__link" href={'/player/' + id}>{u.point}</a></td>
