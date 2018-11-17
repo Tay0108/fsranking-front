@@ -61,15 +61,15 @@ export class Ranking extends Component {
             </thead>
             <tbody className="ranking__body">
               {
-                players.map((player, id) =>
+                players.map((player) =>
                   (
-                    <tr key={id} className="ranking__row">
-                    <td><a className="ranking__link" href={'/players/' + id}>{place++}.</a></td>
-                    <td><a className="ranking__link" href={'/players/' + id}>{player.firstName + ' ' + player.lastName}</a></td>
-                    <td><a className="ranking__link" href={'/players/' + id}>{player.age}</a></td>
-                    <td><a className="ranking__link" href={'/players/' + id}><img className="ranking__flag" src={'/img/flags/' + player.nationality + '.svg'} alt="Poland" /></a></td>
-                    <td><a className="ranking__link" href={'/players/' + id}>{player.point}</a></td>
-                    <td><a className="ranking__link" href={'/players/' + id}>up</a></td>
+                    <tr key={player.id} className="ranking__row">
+                    <td><a className="ranking__link" href={'/players/' + player.id}>{place++}.</a></td>
+                    <td><a className="ranking__link" href={'/players/' + player.id}>{player.firstName + ' ' + player.lastName}</a></td>
+                    <td><a className="ranking__link" href={'/players/' + player.id}>{player.age}</a></td>
+                    <td><a className="ranking__link" href={'/players/' + player.id}><img className="ranking__flag" src={'/img/flags/' + player.nationality + '.svg'} alt="Poland" /></a></td>
+                    <td><a className="ranking__link" href={'/players/' + player.id}>{player.point}</a></td>
+                    <td><a className="ranking__link" href={'/players/' + player.id}>up</a></td>
                     </tr>
                   )
                 )
