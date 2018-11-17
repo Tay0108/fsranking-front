@@ -13,6 +13,8 @@ export class AppHeader extends Component {
             <h1 className="app-header__title">FSRanking</h1>
             <span className="app-header__subtitle">Polski Ranking Freestyle Football</span>
           </Link>
+          <Link to="/players">Lista zawodników</Link>
+          <Link to="/competitions">Lista zawodów</Link>
         </header>
       </div>
     )

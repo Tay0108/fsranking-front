@@ -1,0 +1,50 @@
+.players-list__table {
+    width: 100%;
+    text-align: center;
+}
+
+.players-list__header {
+    background-color: rgba(80, 111, 148, 0.7);
+    box-sizing: border-box;
+}
+
+.players-list__header th {
+    height: 50px;
+    vertical-align: middle;
+    font-weight: bold;
+}
+
+.players-list__body {
+    font-family: 'Roboto';
+    font-weight: 500;
+}
+
+.players-list__link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: #000000;
+}
+
+.players-list__row {
+    box-sizing: border-box;
+    height: 30px;
+}
+
+.players-list__row td {
+    vertical-align: middle;
+}
+
+.players-list__row:nth-child(2n-1) {
+    background-color: rgba(199,199,200,0.7);
+}
+
+.players-list__row:nth-child(2n) {
+    background-color: rgba(168,168,169,0.7);
+}
+
+.players-list__flag {
+    width: 20px;
+    height: auto;
+}
