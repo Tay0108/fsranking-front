@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './ranking.scss';
 import RankingTopPlayer from './RankingTopPlayer';
 import Loader from '../Loader/Loader';
-
+import { Link } from 'react-router-dom';
 
 export class Ranking extends Component {
 
@@ -64,12 +64,12 @@ export class Ranking extends Component {
                 players.map((player) =>
                   (
                     <tr key={player.id} className="ranking__row">
-                    <td><a className="ranking__link" href={'/players/' + player.id}>{place++}.</a></td>
-                    <td><a className="ranking__link" href={'/players/' + player.id}>{player.firstName + ' ' + player.lastName}</a></td>
-                    <td><a className="ranking__link" href={'/players/' + player.id}>{player.age}</a></td>
-                    <td><a className="ranking__link" href={'/players/' + player.id}><img className="ranking__flag" src={'/img/flags/' + player.nationality + '.svg'} alt="Poland" /></a></td>
-                    <td><a className="ranking__link" href={'/players/' + player.id}>{player.point}</a></td>
-                    <td><a className="ranking__link" href={'/players/' + player.id}>up</a></td>
+                    <td><Link to={'/player/' + player.id} className="ranking__link">{place++}.</Link></td>
+                    <td><Link to={'/player/' + player.id} className="ranking__link">{player.firstName + ' ' + player.lastName}</Link></td>
+                    <td><Link to={'/player/' + player.id} className="ranking__link">{player.age}</Link></td>
+                    <td><Link to={'/player/' + player.id} className="ranking__link"><img className="ranking__flag" src={'/img/flags/' + player.nationality + '.svg'} alt="Poland" /></Link></td>
+                    <td><Link to={'/player/' + player.id} className="ranking__link">{player.point}</Link></td>
+                    <td><Link to={'/player/' + player.id} className="ranking__link">up</Link></td>
                     </tr>
                   )
                 )

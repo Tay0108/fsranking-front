@@ -33,9 +33,47 @@
         margin-top: 30px;
     }
 
+    .charts__chart {
+        margin-bottom: 20px;
+    }
+
     .player__title {
         color: #ffffff;
         font-size: 2em;
         margin-bottom: 20px;
+    }
+
+
+    .player__history {
+        width: 100%;
+        text-align: center;
+    }
+
+    .history__header {
+        background-color: rgba(80, 111, 148, 0.7);
+        box-sizing: border-box;
+    }
+
+    .history__header th {
+        height: 50px;
+        vertical-align: middle;
+        font-weight: bold;
+    }
+
+    .history__row {
+        box-sizing: border-box;
+        height: 30px;
+    }
+
+    .history__row td {
+        vertical-align: middle;
+    }
+
+    .history__row:nth-child(2n-1) {
+        background-color: rgba(199,199,200,0.7);
+    }
+
+    .history__row:nth-child(2n) {
+        background-color: rgba(168,168,169,0.7);
     }
 }

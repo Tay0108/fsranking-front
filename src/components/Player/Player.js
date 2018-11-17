@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './player.scss';
 import Loader from '../Loader/Loader';
 import { Line as LineChart, Bar as BarChart } from 'react-chartjs';
+//import
 
 export class Player extends Component {
 
@@ -28,17 +29,17 @@ export class Player extends Component {
         }
 
         let battlePlacesChartData = {
-            labels: [1, 2, 3, 4, 5, 6, 7],
+            labels: ['1wszy', '2gi', '3ci', '4ty', '5ty', '6ty', '7my', '8my', '9ty', '10ty', '11ty','12ty','13ty','14ty', '15ty', '16ty'],
             datasets: [
                 {
                     label: "Pozycja w rankingu battle:",
-                    fillColor: "rgba(220,220,220,0.2)",
+                    fillColor: "rgba(220,220,220,0.4)",
                     strokeColor: "rgba(220,220,220,1)",
                     pointColor: "rgba(220,220,220,1)",
                     pointStrokeColor: "#fff",
                     pointHighlightFill: "#fff",
                     pointHighlightStroke: "rgba(220,220,220,1)",
-                    data: [11, 14, 5, 8, 4, 15, 4]
+                    data: [11, 14, 5, 8, 4, 15, 4, 2, 12, 2, 5, 24, 5, 4, 2, 1]
                 },
             ]
         };
@@ -48,7 +49,7 @@ export class Player extends Component {
             datasets: [
                 {
                     label: "Pozycja w rankingu battle:",
-                    fillColor: "rgba(220,220,220,0.2)",
+                    fillColor: "rgba(220,220,220,0.4)",
                     strokeColor: "rgba(220,220,220,1)",
                     pointColor: "rgba(220,220,220,1)",
                     pointStrokeColor: "#fff",
@@ -64,7 +65,7 @@ export class Player extends Component {
             datasets: [
                 {
                     label: "Pozycja w rankingu battle:",
-                    fillColor: "rgba(220,220,220,0.2)",
+                    fillColor: "rgba(220,220,220,0.4)",
                     strokeColor: "rgba(220,220,220,1)",
                     pointColor: "rgba(220,220,220,1)",
                     pointStrokeColor: "#fff",
@@ -75,9 +76,15 @@ export class Player extends Component {
             ]
         };
 
-        let battlePlacesChartOptions = {};
-        let battlePositionChartOptions = {};
-        let battlePointsChartOptions = {};
+        let battlePlacesChartOptions = {
+            scaleFontColor: "#ffffff",
+        };
+        let battlePositionChartOptions = {
+            scaleFontColor: "#ffffff",
+        };
+        let battlePointsChartOptions = {
+            scaleFontColor: "#ffffff",
+        };
 
         return (
             this.state === {} ?
@@ -92,7 +99,9 @@ export class Player extends Component {
                     <span className="player__name">{`${this.state.firstName} "${this.state.nick}" ${this.state.lastName}`}</span>
                     <img className="player__flag" src={`/img/flags/${this.state.nationality}.svg`} alt="Poland" />
 
+                    <ul className="player__social-media">
 
+                    </ul>
                     <div className="player__charts">
                         <h3 className="player__title">Statystyki:</h3>
                         <select className="charts__select">
@@ -100,23 +109,55 @@ export class Player extends Component {
                             <option>Challenge</option>
                             <option>Routine</option>
                         </select>
-                        <BarChart data={battlePlacesChartData} options={battlePlacesChartOptions} />
+                        <BarChart className="charts__chart" data={battlePlacesChartData} options={battlePlacesChartOptions} />
                         <select className="charts__select">
                             <option>Battle</option>
                             <option>Challenge</option>
                             <option>Routine</option>
                         </select>
-                        <LineChart data={battlePositionChartData} options={battlePositionChartOptions} />
+                        <LineChart className="charts__chart" data={battlePositionChartData} options={battlePositionChartOptions} />
                         <select className="charts__select">
                             <option>Battle</option>
                             <option>Challenge</option>
                             <option>Routine</option>
                         </select>
-                        <LineChart data={battlePointsChartData} options={battlePointsChartOptions} />
+                        <LineChart className="charts__chart" data={battlePointsChartData} options={battlePointsChartOptions} />
                     </div>
 
                     <h3 className="player__title">Historia startów:</h3>
                     <table className="player__history">
+                        <thead className="history__header">
+                            <tr>
+                                <th>Miejsce</th>
+                                <th>Zawody</th>
+                                <th>Konkurencja</th>
+                                <th>Punkty</th>
+                                <th>Data</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr className="history__row">
+                                <td>1.</td>
+                                <td>Lubasz Freestyle Night 2018</td>
+                                <td>Battle</td>
+                                <td>120</td>
+                                <td>28-01-2018</td>
+                            </tr>
+                            <tr className="history__row">
+                                <td>1.</td>
+                                <td>Lubasz Freestyle Night 2018</td>
+                                <td>Battle</td>
+                                <td>120</td>
+                                <td>28-01-2018</td>
+                            </tr>
+                            <tr className="history__row">
+                                <td>1.</td>
+                                <td>Lubasz Freestyle Night 2018</td>
+                                <td>Battle</td>
+                                <td>120</td>
+                                <td>28-01-2018</td>
+                            </tr>
+                        </tbody>
                     </table>
 
                 </div>)

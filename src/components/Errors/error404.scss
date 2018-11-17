@@ -1,0 +1,17 @@
+.error {
+    background-color: rgba(0,0,0,0.6);
+    box-sizing: border-box;
+    padding: 30px;
+
+    .error__title {
+        font-size: 3em;
+        color: #ffffff;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .error__description {
+        color: #ffffff;
+        text-align: center;
+    }
+}

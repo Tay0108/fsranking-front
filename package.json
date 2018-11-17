@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "chart.js": "1.1.1",
+    "font-awesome": "^4.7.0",
     "node-sass": "^4.10.0",
     "react": "^16.6.1",
     "react-chartjs": "^1.2.0",
