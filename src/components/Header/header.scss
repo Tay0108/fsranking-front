@@ -5,26 +5,24 @@
     .app-header {
         
         padding: 10px 10px;
-        margin: 0 auto 50px auto;
-        height: 100px;
+        margin: 0 auto;
         display: flex;
-        width: 1200px;
+
         .app-header__logo {
             width: 50px;
             height: 50px;
             margin-right: 10px;
-            padding-top: 7px;
         }
         .app-header__title {
             color: #ffffff;
             font-family: 'Montserrat', sans-serif;
-            font-size: 5em;
+            font-size: 3em;
             margin-bottom: 12px;
         }
         .app-header__subtitle {
             color: #3786e5;
             font-family: 'Montserrat', sans-serif;
-            font-size: 1.6em;
+            font-size: 1.2em;
         }
     }
 }

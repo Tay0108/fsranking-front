@@ -21,5 +21,5 @@ export default (props) => {
                 </g>
             </svg>
         </div>
-    )
+    );
 }

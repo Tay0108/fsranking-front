@@ -9,6 +9,7 @@ export class Ranking extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      players: null,
     };
   }
 
@@ -24,7 +25,7 @@ export class Ranking extends Component {
     let players = [];
 
     if(this.state.players != null) {
-      this.state.players.sort((a, b) => -1 * (a.point - b.point))
+      this.state.players.sort((a, b) => (-1)*(a.point - b.point))
       top3 = this.state.players.slice(0,3);
       players = this.state.players.slice(3, this.state.players.length);
     }
@@ -43,8 +44,8 @@ export class Ranking extends Component {
         (<section className="ranking">
 
           <ul className="ranking__top-list">
-            <li><RankingTopPlayer player={top3[1]} color='#c0c0c0' /></li>
             <li><RankingTopPlayer player={top3[0]} color='#ffd700' /></li>
+            <li><RankingTopPlayer player={top3[1]} color='#c0c0c0' /></li>
             <li><RankingTopPlayer player={top3[2]} color='#905923' /></li>
           </ul>
           <table className="ranking__table">
@@ -60,15 +61,15 @@ export class Ranking extends Component {
             </thead>
             <tbody className="ranking__body">
               {
-                players.map((u, id) =>
+                players.map((player, id) =>
                   (
                     <tr key={id} className="ranking__row">
-                    <td><a className="ranking__link" href={'/player/' + id}>{place++}.</a></td>
-                    <td><a className="ranking__link" href={'/player/' + id}>{u.firstName + ' ' + u.lastName}</a></td>
-                    <td><a className="ranking__link" href={'/player/' + id}>{u.age}</a></td>
-                    <td><a className="ranking__link" href={'/player/' + id}><img className="ranking__flag" src={'/img/flags/poland.svg'} alt="Poland" /></a></td>
-                    <td><a className="ranking__link" href={'/player/' + id}>{u.point}</a></td>
-                    <td><a className="ranking__link" href={'/player/' + id}>up</a></td>
+                    <td><a className="ranking__link" href={'/players/' + id}>{place++}.</a></td>
+                    <td><a className="ranking__link" href={'/players/' + id}>{player.firstName + ' ' + player.lastName}</a></td>
+                    <td><a className="ranking__link" href={'/players/' + id}>{player.age}</a></td>
+                    <td><a className="ranking__link" href={'/players/' + id}><img className="ranking__flag" src={'/img/flags/' + player.nationality + '.svg'} alt="Poland" /></a></td>
+                    <td><a className="ranking__link" href={'/players/' + id}>{player.point}</a></td>
+                    <td><a className="ranking__link" href={'/players/' + id}>up</a></td>
                     </tr>
                   )
                 )
@@ -77,7 +78,7 @@ export class Ranking extends Component {
           </table>
         </section>
         )
-    )
+    );
   }
 }
 

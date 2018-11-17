@@ -12,9 +12,6 @@ export class AppHeader extends Component {
             <h1 className="app-header__title">FSRanking</h1>
             <span className="app-header__subtitle">Polski Ranking Freestyle Football</span>
           </div>
-          <form className="app-header__search-form">
-            <input type="text" placeholder="Wyszukaj zawodnika..." />
-          </form>
         </header>
       </div>
     )

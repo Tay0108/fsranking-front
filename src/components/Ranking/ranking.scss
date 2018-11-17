@@ -1,12 +1,11 @@
 .ranking {
-    width: 800px;
+    width: 100%;
     margin: 0 auto;
     margin-bottom: 50px;
 
     .ranking__top-list {
         display: flex;
-        justify-content: space-between;
-        margin-bottom: 30px;
+        flex-direction: column;
     }
 
     .ranking__table {
@@ -26,7 +25,6 @@
     }
 
     .ranking__body {
-        font-size: 1.2em;
         font-family: 'Roboto';
         font-weight: 500;
     }
@@ -37,10 +35,6 @@
         height: 100%;
         text-decoration: none;
         color: #000000;
-    }
-
-    .ranking__link:hover .ranking__row {
-        background-color: #000000 !important;
     }
 
     .ranking__row {

@@ -1,0 +1,32 @@
+.player {
+
+    background-color: rgba(0,0,0,0.6);
+    text-align: center;
+
+    .player__image {
+        display: block;
+        border-radius: 50%;
+        box-sizing: border-box;
+        margin: 0 auto;
+        width: 80%;
+        height: auto;
+    }
+
+    .player__name {
+        color: #FFFFFF;
+        display: block;
+    }
+
+    .player__flag {
+        width: 30px;
+        margin: 0 auto;
+    }
+
+    .player__social-media {
+
+    }
+
+    .player__charts {
+
+    }
+}

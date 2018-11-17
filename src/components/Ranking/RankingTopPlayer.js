@@ -13,17 +13,15 @@ export class RankingTopPlayer extends Component {
       backgroundColor: this.props.color
     }
 
-    console.log(this.props.color);
-
     return (
 
      <div className="top-player">
-        <img className="top-player__image" style={imageStyle} src={'/img/players/' + this.props.player.image} alt="zawodnik"/>
-        <span className="top-player__name">{this.props.player.firstName + ' ' + this.props.player.lastName}</span>
-        <img className="top-player__flag" src={'/img/flags/' + this.props.player.nationality + '.svg'} alt="Poland"/>
+         <a href={'/players/' + this.props.player.id}><img className="top-player__image" style={imageStyle} src="/img/players/lotar.png" alt="zawodnik"/></a> {/*'/img/players/' + this.props.player.id + this.props.player.lastName + '.jpg'*/}
+        <a href={'/players/' + this.props.player.id} className="top-player__name">{this.props.player.firstName + ' ' + this.props.player.lastName}</a>
+       <img className="top-player__flag" src={'/img/flags/' + this.props.player.nationality + '.svg'} alt="Poland"/>
         <div className="top-player__points" style={pointsStyle}>{this.props.player.point}</div>
      </div> 
-    )
+    );
   }
 }
 
