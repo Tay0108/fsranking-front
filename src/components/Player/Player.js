@@ -7,7 +7,11 @@ class Player extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            firstName: '',
+            lastName: '',
+            nick: ''
+        };
     }
 
     componentDidMount() {

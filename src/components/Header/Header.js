@@ -30,8 +30,8 @@ class AppHeader extends Component {
           <nav className="page-nav">
             <button type="button" className="page-nav__sharp" onClick={this.closeMenu}><FontAwesomeIcon icon={faTimes} /></button>
             <ul className="page-nav__links">
-              <li><Link to="/players">Lista zawodników</Link></li>
-              <li><Link to="/competitions">Lista zawodów</Link></li>
+              <li className="page-nav__link"><Link to="/players">Lista zawodników</Link></li>
+              <li className="page-nav__link"><Link to="/competitions">Lista zawodów</Link></li>
             </ul>
           </nav>
         </header>

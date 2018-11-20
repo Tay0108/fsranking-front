@@ -29,6 +29,7 @@
             color: #ffffff;
             height: 30px;
             width: 30px;
+            padding: 0;
         }
         .app-header__hamburger--hidden {
             visibility: hidden;
@@ -41,6 +42,7 @@
             background-color: #000000;
             position: fixed; 
             top: 0;
+            left: 0;
             padding: 10px;
             box-sizing: border-box;
         }
@@ -58,10 +60,25 @@
             border: 1px solid #ffffff;
             color: #ffffff;
             position: absolute;
-            right: 0;
+            right: 10px;
             top: 10px;
             height: 30px;
             width: 30px;
+            padding: 0;
+        }
+
+        .page-nav__links {
+            margin-top: 10px;
+        }
+
+        .page-nav__link {
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .page-nav__link:hover {
+            text-decoration: underline;
         }
     }
 }
