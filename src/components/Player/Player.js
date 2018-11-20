@@ -4,7 +4,7 @@ import Loader from '../Loader/Loader';
 import { Line as LineChart, Bar as BarChart } from 'react-chartjs';
 //import
 
-export class Player extends Component {
+class Player extends Component {
 
     constructor(props) {
         super(props);
