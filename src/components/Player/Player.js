@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './player.scss';
 import Loader from '../Loader/Loader';
 import { Line as LineChart, Bar as BarChart } from 'react-chartjs';
-//import
 
 export class Player extends Component {
 

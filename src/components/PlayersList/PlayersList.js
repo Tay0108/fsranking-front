@@ -3,7 +3,7 @@ import './playerslist.scss';
 import Loader from '../Loader/Loader';
 import { Link } from 'react-router-dom';
 
-export class PlayersList extends Component {
+class PlayersList extends Component {
 
   constructor() {
     super();
