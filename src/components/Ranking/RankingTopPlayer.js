@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './rankingtopplayer.scss';
 
-export class RankingTopPlayer extends Component {
+class RankingTopPlayer extends Component {
 
   render() {
 

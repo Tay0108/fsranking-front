@@ -7,11 +7,7 @@ class Player extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            firstName: '',
-            lastName: '',
-            nick: ''
-        };
+        this.state = {};
     }
 
     componentDidMount() {
@@ -90,7 +86,7 @@ class Player extends Component {
         };
 
         return (
-            this.state === {} ?
+            this.state.firstName === undefined ?
                 (<Loader
                     color="#010021"
                     height="200"

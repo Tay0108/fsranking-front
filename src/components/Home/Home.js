@@ -3,7 +3,7 @@ import './home.scss';
 import Ranking from './../Ranking/Ranking';
 //import Banner from './../Banner/Banner';
 
-export class Home extends Component {
+class Home extends Component {
   
   render() {
     return (

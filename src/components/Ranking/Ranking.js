@@ -4,7 +4,7 @@ import RankingTopPlayer from './RankingTopPlayer';
 import Loader from '../Loader/Loader';
 import { Link } from 'react-router-dom';
 
-export class Ranking extends Component {
+class Ranking extends Component {
 
   constructor(props) {
     super(props);

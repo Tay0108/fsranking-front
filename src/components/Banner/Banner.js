@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './banner.scss';
 
-export class Banner extends Component {
+class Banner extends Component {
   
     constructor(props) {
     super(props);

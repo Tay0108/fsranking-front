@@ -3,7 +3,7 @@ import './competitionslist.scss';
 import Loader from '../Loader/Loader';
 import { Link } from 'react-router-dom';
 
-export class CompetitionsList extends Component {
+class CompetitionsList extends Component {
 
   constructor() {
     super();
