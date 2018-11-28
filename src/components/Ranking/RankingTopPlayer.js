@@ -16,12 +16,14 @@ class RankingTopPlayer extends Component {
 
     return (
 
-     <div className="top-player">
-        <Link to={'/player/' + this.props.player.id}><img className="top-player__image" style={imageStyle} src="/img/players/lotar.png" alt="zawodnik"/></Link> {/*'/img/players/' + this.props.player.id + this.props.player.lastName + '.jpg'*/}
-        <Link to={'/player/' + this.props.player.id} className="top-player__name">{this.props.player.firstName + ' ' + this.props.player.lastName}</Link>
-       <img className="top-player__flag" src={'/img/flags/' + this.props.player.nationality + '.svg'} alt="Poland"/>
-        <div className="top-player__points" style={pointsStyle}>{this.props.player.point}</div>
-     </div> 
+      <div className="top-player">
+        <Link to={'/player/' + this.props.player.idPlayer}>
+          <img className="top-player__image" style={imageStyle} src={`/img/players/${this.props.player.idPlayer}_${this.props.player.lastName}.png`} alt={`${this.props.player.firstName}  ${this.props.player.lastName}`} onError={(e) => { e.target.onerror = null; e.target.src = "/img/players/notfound.png" }} />
+          </Link>
+        <Link to={'/player/' + this.props.player.idPlayer} className="top-player__name">{this.props.player.firstName + ' ' + this.props.player.lastName}</Link>
+        <img className="top-player__flag" src={'/img/flags/' + this.props.player.nationality + '.svg'} alt="Poland" />
+        <div className="top-player__points" style={pointsStyle}>{this.props.player.points}</div>
+      </div>
     );
   }
 }

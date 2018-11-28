@@ -28,7 +28,7 @@ class Player extends Component {
         }
 
         let battlePlacesChartData = {
-            labels: ['1wszy', '2gi', '3ci', '4ty', '5ty', '6ty', '7my', '8my', '9ty', '10ty', '11ty','12ty','13ty','14ty', '15ty', '16ty'],
+            labels: ['1wszy', '2gi', '3ci', '4ty', '5ty', '6ty', '7my', '8my', '9ty', '10ty', '11ty', '12ty', '13ty', '14ty', '15ty', '16ty'],
             datasets: [
                 {
                     label: "Pozycja w rankingu battle:",
@@ -94,7 +94,7 @@ class Player extends Component {
                 />)
                 :
                 (<div className="player">
-                    <img className="player__image" src="/img/players/szymo.png" alt="to jest Szymo" style={imageStyle} />
+                    <img className="player__image" src={`/img/players/${this.state.id}_${this.state.lastName}.png`} alt={`${this.state.firstName}  ${this.state.lastName}`} style={imageStyle} onError={(e) => { e.target.onerror = null; e.target.src = "/img/players/notfound.png" }} />
                     <span className="player__name">{`${this.state.firstName} "${this.state.nick}" ${this.state.lastName}`}</span>
                     <img className="player__flag" src={`/img/flags/${this.state.nationality}.svg`} alt="Poland" />
 

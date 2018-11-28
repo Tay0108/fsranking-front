@@ -14,7 +14,7 @@ class Ranking extends Component {
   }
 
   componentDidMount() {
-    fetch('https://fsranking.herokuapp.com/players')
+    fetch('http://fsranking.herokuapp.com/rankings/battle')
       .then(response => response.json())
       .then(json => this.setState({ players: json })); 
   }
@@ -25,7 +25,7 @@ class Ranking extends Component {
     let players = [];
 
     if(this.state.players != null) {
-      this.state.players.sort((a, b) => (-1)*(a.point - b.point))
+      this.state.players.sort((a, b) => (-1)*(a.points - b.points))
       top3 = this.state.players.slice(0,3);
       players = this.state.players.slice(3, this.state.players.length);
     }
@@ -63,13 +63,13 @@ class Ranking extends Component {
               {
                 players.map((player) =>
                   (
-                    <tr key={player.id} className="ranking__row">
-                    <td><Link to={'/player/' + player.id} className="ranking__link">{place++}.</Link></td>
-                    <td><Link to={'/player/' + player.id} className="ranking__link">{player.firstName + ' ' + player.lastName}</Link></td>
-                    <td><Link to={'/player/' + player.id} className="ranking__link">{player.age}</Link></td>
-                    <td><Link to={'/player/' + player.id} className="ranking__link"><img className="ranking__flag" src={'/img/flags/' + player.nationality + '.svg'} alt="Poland" /></Link></td>
-                    <td><Link to={'/player/' + player.id} className="ranking__link">{player.point}</Link></td>
-                    <td><Link to={'/player/' + player.id} className="ranking__link">up</Link></td>
+                    <tr key={player.idPlayer} className="ranking__row">
+                    <td><Link to={'/player/' + player.idPlayer} className="ranking__link">{place++}.</Link></td>
+                    <td><Link to={'/player/' + player.idPlayer} className="ranking__link">{player.firstName + ' ' + player.lastName}</Link></td>
+                    <td><Link to={'/player/' + player.idPlayer} className="ranking__link">{player.age}</Link></td>
+                    <td><Link to={'/player/' + player.idPlayer} className="ranking__link"><img className="ranking__flag" src={'/img/flags/' + player.nationality + '.svg'} alt="Poland" /></Link></td>
+                    <td><Link to={'/player/' + player.idPlayer} className="ranking__link">{player.points}</Link></td>
+                    <td><Link to={'/player/' + player.idPlayer} className="ranking__link">up</Link></td>
                     </tr>
                   )
                 )
