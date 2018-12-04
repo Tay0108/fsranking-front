@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './player.scss';
 import Loader from '../Loader/Loader';
 import { Line as LineChart, Bar as BarChart } from 'react-chartjs';
+import { Link } from 'react-router-dom';
 
 class Player extends Component {
 
@@ -11,10 +12,19 @@ class Player extends Component {
     }
 
     componentDidMount() {
-        fetch('https://fsranking.herokuapp.com/players/' + this.props.match.params.id) // + this.param.id
+        fetch('https://fsranking.herokuapp.com/players/' + this.props.match.params.id)
             .then(response => response.json())
             .then(json => this.setState(json));
+
+        fetch('https://fsranking.herokuapp.com/players/' + this.props.match.params.id + '/history')
+            .then(response => response.json())
+            .then(json => this.setState({ history: json }));
+
     }
+
+    validateData() {
+        return this.state.firstName !== undefined && this.state.history !== undefined;
+      }
 
     render() {
         let imageStyle = {
@@ -85,81 +95,71 @@ class Player extends Component {
             scaleFontColor: "#ffffff",
         };
 
+        let i = 0;
+
+        if (!this.validateData()) {
+            return (<Loader
+                color="#010021"
+                height="200"
+                width="200"
+            />);
+        }
+
         return (
-            this.state.firstName === undefined ?
-                (<Loader
-                    color="#010021"
-                    height="200"
-                    width="200"
-                />)
-                :
-                (<div className="player">
-                    <img className="player__image" src={`/img/players/${this.state.id}_${this.state.lastName}.png`} alt={`${this.state.firstName}  ${this.state.lastName}`} style={imageStyle} onError={(e) => { e.target.onerror = null; e.target.src = "/img/players/notfound.png" }} />
-                    <span className="player__name">{`${this.state.firstName} "${this.state.nick}" ${this.state.lastName}`}</span>
-                    <img className="player__flag" src={`/img/flags/${this.state.nationality}.svg`} alt="Poland" />
+            <div className="player">
+                <img className="player__image" src={`/img/players/${this.state.id}_${this.state.lastName}.png`} alt={`${this.state.firstName}  ${this.state.lastName}`} style={imageStyle} onError={(e) => { e.target.onerror = null; e.target.src = "/img/players/notfound.png" }} />
+                <span className="player__name">{`${this.state.firstName} "${this.state.nick}" ${this.state.lastName}`}</span>
+                <img className="player__flag" src={`/img/flags/${this.state.nationality}.svg`} alt="Poland" />
 
-                    <ul className="player__social-media">
+                <ul className="player__social-media">
 
-                    </ul>
-                    <div className="player__charts">
-                        <h3 className="player__title">Statystyki:</h3>
-                        <select className="charts__select">
-                            <option>Battle</option>
-                            <option>Challenge</option>
-                            <option>Routine</option>
-                        </select>
-                        <BarChart className="charts__chart" data={battlePlacesChartData} options={battlePlacesChartOptions} />
-                        <select className="charts__select">
-                            <option>Battle</option>
-                            <option>Challenge</option>
-                            <option>Routine</option>
-                        </select>
-                        <LineChart className="charts__chart" data={battlePositionChartData} options={battlePositionChartOptions} />
-                        <select className="charts__select">
-                            <option>Battle</option>
-                            <option>Challenge</option>
-                            <option>Routine</option>
-                        </select>
-                        <LineChart className="charts__chart" data={battlePointsChartData} options={battlePointsChartOptions} />
-                    </div>
+                </ul>
+                <div className="player__charts">
+                    <h3 className="player__title">Statystyki:</h3>
+                    <select className="charts__select">
+                        <option>Battle</option>
+                        <option>Challenge</option>
+                        <option>Routine</option>
+                    </select>
+                    <BarChart className="charts__chart" data={battlePlacesChartData} options={battlePlacesChartOptions} />
+                    <select className="charts__select">
+                        <option>Battle</option>
+                        <option>Challenge</option>
+                        <option>Routine</option>
+                    </select>
+                    <LineChart className="charts__chart" data={battlePositionChartData} options={battlePositionChartOptions} />
+                    <select className="charts__select">
+                        <option>Battle</option>
+                        <option>Challenge</option>
+                        <option>Routine</option>
+                    </select>
+                    <LineChart className="charts__chart" data={battlePointsChartData} options={battlePointsChartOptions} />
+                </div>
 
-                    <h3 className="player__title">Historia startów:</h3>
-                    <table className="player__history">
-                        <thead className="history__header">
-                            <tr>
-                                <th>Miejsce</th>
-                                <th>Zawody</th>
-                                <th>Konkurencja</th>
-                                <th>Punkty</th>
-                                <th>Data</th>
+                <h3 className="player__title">Historia startów:</h3>
+                <table className="player__history">
+                    <thead className="history__header">
+                        <tr>
+                            <th>Miejsce</th>
+                            <th>Zawody</th>
+                            <th>Konkurencja</th>
+                            <th>Data</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.state.history.map((entry) =>
+                            <tr key={i++} className="history__row">
+                                <td>{entry.place + '.'}</td>
+                                <td><Link to={'/competition/' + entry.competition.id}>{entry.competition.name}</Link></td>
+                                <td>{entry.category}</td>
+                                <td>{entry.date}</td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            <tr className="history__row">
-                                <td>1.</td>
-                                <td>Lubasz Freestyle Night 2018</td>
-                                <td>Battle</td>
-                                <td>120</td>
-                                <td>28-01-2018</td>
-                            </tr>
-                            <tr className="history__row">
-                                <td>1.</td>
-                                <td>Lubasz Freestyle Night 2018</td>
-                                <td>Battle</td>
-                                <td>120</td>
-                                <td>28-01-2018</td>
-                            </tr>
-                            <tr className="history__row">
-                                <td>1.</td>
-                                <td>Lubasz Freestyle Night 2018</td>
-                                <td>Battle</td>
-                                <td>120</td>
-                                <td>28-01-2018</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                        )
+                        }
+                    </tbody>
+                </table>
 
-                </div>)
+            </div>
         );
     }
 }

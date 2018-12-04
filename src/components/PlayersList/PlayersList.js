@@ -8,19 +8,20 @@ class PlayersList extends Component {
   constructor() {
     super();
     this.state = {
-        players: [],
+      players: [],
     };
   }
 
   componentDidMount() {
     fetch('https://fsranking.herokuapp.com/players')
-    .then(response => response.json())
-    .then(json => this.setState({ players: json }));
+      .then(response => response.json())
+      .then(json => this.setState({ players: json }));
   }
+
   render() {
 
-  return(
-  this.state.players.length === 0 ?
+    return (
+      this.state.players.length === 0 ?
         (<Loader
           color="#010021"
           height="200"
@@ -43,10 +44,10 @@ class PlayersList extends Component {
                 this.state.players.map((player) =>
                   (
                     <tr key={player.id} className="players-list__row">
-                    <td><Link to={'/player/' + player.id} className="players-list__link">{player.firstName + ' ' + player.lastName}</Link></td>
-                    <td><Link to={'/player/' + player.id} className="players-list__link">{player.nick}</Link></td>
-                    <td><Link to={'/player/' + player.id} className="players-list__link">{player.age}</Link></td>
-                    <td><Link to={'/player/' + player.id} className="players-list__link"><img className="players-list__flag" src={'/img/flags/' + player.nationality + '.svg'} alt="Poland" /></Link></td>
+                      <td><Link to={'/player/' + player.id} className="players-list__link">{player.firstName + ' ' + player.lastName}</Link></td>
+                      <td><Link to={'/player/' + player.id} className="players-list__link">{player.nick}</Link></td>
+                      <td><Link to={'/player/' + player.id} className="players-list__link">{player.age}</Link></td>
+                      <td><Link to={'/player/' + player.id} className="players-list__link"><img className="players-list__flag" src={'/img/flags/' + player.nationality + '.svg'} alt="Poland" /></Link></td>
                     </tr>
                   )
                 )
