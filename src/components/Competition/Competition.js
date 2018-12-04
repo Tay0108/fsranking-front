@@ -26,7 +26,8 @@ class Competition extends Component {
             : (
             <div className="competition">
             {this.state.name}
-            {this.state.location.name}
+            <h3>Lokalizacja: {this.state.location.name}</h3>
+            <h3>Waga: {this.state.importance}</h3>
             </div>
             )
         );
