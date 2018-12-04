@@ -4,7 +4,6 @@ import Loader from '../Loader/Loader';
 import { Link } from 'react-router-dom';
 import { faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 class CompetitionsList extends Component {
 
   constructor(props) {
@@ -100,8 +99,8 @@ class CompetitionsList extends Component {
                 )
               }
             </tbody>
-          </table >
-        </section >
+          </table>
+        </section>
       );
     }
   }

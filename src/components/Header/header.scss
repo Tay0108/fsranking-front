@@ -33,6 +33,7 @@
             position: absolute;
             right: 10px;
             top: 10px;
+            cursor: pointer;
         }
         .app-header__hamburger--hidden {
             visibility: hidden;
@@ -68,6 +69,7 @@
             height: 30px;
             width: 30px;
             padding: 0;
+            cursor: pointer;
         }
 
         .page-nav__links {

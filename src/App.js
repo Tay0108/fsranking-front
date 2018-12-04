@@ -24,6 +24,8 @@ class App extends Component {
           <Route exact path='/competition/:id' component={Competition} />
           <Route path='/competitions' component={CompetitionsList} />
           <Route exact path='/' component={Home} />
+          <Route exact path='ranking/challenge' component={Home} />
+          <Route exact path='ranking/routine' component={Home} />
           <Route component={Error404} />
         </Switch>
         <Footer />
