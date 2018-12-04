@@ -95,7 +95,7 @@ class Player extends Component {
                 :
                 (<div className="player">
                     <img className="player__image" src={`/img/players/${this.state.id}_${this.state.lastName}.png`} alt={`${this.state.firstName}  ${this.state.lastName}`} style={imageStyle} onError={(e) => { e.target.onerror = null; e.target.src = "/img/players/notfound.png" }} />
-                    <span className="player__name">{`${this.state.firstName} "${this.state.nick}" ${this.state.lastName}`}</span>
+                    <h2 className="player__name">{`${this.state.firstName} "${this.state.nick}" ${this.state.lastName}`}</h2>
                     <img className="player__flag" src={`/img/flags/${this.state.nationality}.svg`} alt="Poland" />
 
                     <ul className="player__social-media">

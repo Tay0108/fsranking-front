@@ -12,6 +12,19 @@
     height: 50px;
     vertical-align: middle;
     font-weight: bold;
+
+.players-list__sort-arrows {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+
+        .sort-arrow {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+    }
+
 }
 
 .players-list__body {

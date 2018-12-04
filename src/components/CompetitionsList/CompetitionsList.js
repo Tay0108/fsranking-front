@@ -4,6 +4,7 @@ import Loader from '../Loader/Loader';
 import { Link } from 'react-router-dom';
 import { faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import stable from 'stable';
 class CompetitionsList extends Component {
 
   constructor(props) {
@@ -17,32 +18,79 @@ class CompetitionsList extends Component {
       .then(json => this.setState({ competitions: json }));
   }
 
-  compareCompetitionsBy(key, direction) {
-    if (direction === 'DESC') {
-      return function (a, b) {
-        if (a[key] < b[key]) return 1;
-        if (b[key] < a[key]) return -1;
-        return 0;
-      }
+  sortCompetitionsByName(direction) {
+    console.log('sorting by name ' + direction);
+    const asc = (a, b) => String(a.name).localeCompare(b.name);
+    const desc = (a, b) => (-1) * String(a.name).localeCompare(b.name);
+    let competitionsCopy = this.state.competitions;
+    
+    if(direction === 'asc') {
+    stable.inplace(competitionsCopy, asc);
+    } else if(direction === 'desc') {
+      stable.inplace(competitionsCopy,desc);
     }
-    if (direction === 'ASC') {
-      return function (a, b) {
-        if (a[key] < b[key]) return -1;
-        if (b[key] < a[key]) return 1;
-        return 0;
-      }
-    }
-    return function(a,b) {
-      return 0;
-    }
+    this.setState({competitions: competitionsCopy});
   }
 
-  sortCompetitionsBy(key, direction) {
-    console.log('sorting by ' + key + ' ' + direction);
-
+  sortCompetitionsByLocation(direction) {
+    console.log('sorting by location ' + direction);
+    const asc = (a, b) => String(a.location).localeCompare(b.location);
+    const desc = (a, b) => (-1) * String(a.location).localeCompare(b.location);
     let competitionsCopy = this.state.competitions;
-    competitionsCopy.sort(this.compareCompetitionsBy(key, direction));
-    this.setState({competitions: competitionsCopy});
+
+    if (direction === 'asc') {
+      stable.inplace(competitionsCopy, asc);
+    } else if (direction === 'desc') {
+      stable.inplace(competitionsCopy, desc);
+    }
+    this.setState({ competitions: competitionsCopy });
+  }
+
+  sortCompetitionsByDate(direction) {
+    console.log('sorting by date ' + direction);
+
+    const asc = function(a, b) { 
+      if(new Date(a.year).getTime() > new Date(b.year).getTime()) {
+        return 1;
+      } else if (new Date(a.year).getTime() < new Date(b.year).getTime()) {
+        return -1;
+      } 
+      else {
+        return 0;
+      }
+    }
+    const desc = function (a, b) {
+      if (new Date(a.year).getTime() > new Date(b.year).getTime()) {
+        return -1;
+      } else if (new Date(a.year).getTime() < new Date(b.year).getTime()) {
+        return 1;
+      }
+      else {
+        return 0;
+      }
+    }
+    let competitionsCopy = this.state.competitions;
+
+    if (direction === 'asc') {
+      stable.inplace(competitionsCopy, asc);
+    } else if (direction === 'desc') {
+      stable.inplace(competitionsCopy, desc);
+    }
+    this.setState({ competitions: competitionsCopy });
+  }
+
+  sortCompetitionsByImportance(direction) {
+    console.log('sorting by importance ' + direction);
+    const asc = (a, b) => (a.importance - b.importance);
+    const desc = (a, b) => (b.importance - a.importance);
+    let competitionsCopy = this.state.competitions;
+
+    if (direction === 'asc') {
+      stable.inplace(competitionsCopy, asc);
+    } else if (direction === 'desc') {
+      stable.inplace(competitionsCopy, desc);
+    }
+    this.setState({ competitions: competitionsCopy });
   }
 
   render() {
@@ -61,26 +109,26 @@ class CompetitionsList extends Component {
               <tr>
                 <th><span className="competitions-list__column-name">Nazwa</span>
                   <div className="competitions-list__sort-arrows">
-                    <FontAwesomeIcon className="sort-arrow" icon={faSortUp} onClick={() => this.sortCompetitionsBy('name', 'ASC')} />
-                    <FontAwesomeIcon className="sort-arrow" icon={faSortDown} onClick={() => this.sortCompetitionsBy('name', 'DESC')} />
+                    <FontAwesomeIcon className="sort-arrow" icon={faSortUp} onClick={() => this.sortCompetitionsByName('asc')} />
+                    <FontAwesomeIcon className="sort-arrow" icon={faSortDown} onClick={() => this.sortCompetitionsByName('desc')} />
                   </div>
                 </th>
                 <th><span className="competitions-list__column-name">Lokalizacja</span>
                   <div className="competitions-list__sort-arrows">
-                    <FontAwesomeIcon className="sort-arrow" icon={faSortUp} onClick={() => this.sortCompetitionsBy('location', 'ASC')} />
-                    <FontAwesomeIcon className="sort-arrow" icon={faSortDown} onClick={() => this.sortCompetitionsBy('location', 'DESC')} />
+                    <FontAwesomeIcon className="sort-arrow" icon={faSortUp} onClick={() => this.sortCompetitionsByLocation('asc')} />
+                    <FontAwesomeIcon className="sort-arrow" icon={faSortDown} onClick={() => this.sortCompetitionsByLocation('desc')} />
                   </div>
                 </th>
                 <th><span className="competitions-list__column-name">Data</span>
                   <div className="competitions-list__sort-arrows">
-                    <FontAwesomeIcon className="sort-arrow" icon={faSortUp} onClick={() => this.sortCompetitionsBy('year', 'ASC')} />
-                    <FontAwesomeIcon className="sort-arrow" icon={faSortDown} onClick={() => this.sortCompetitionsBy('year', 'DESC')} />
+                    <FontAwesomeIcon className="sort-arrow" icon={faSortUp} onClick={() => this.sortCompetitionsByDate('asc')} />
+                    <FontAwesomeIcon className="sort-arrow" icon={faSortDown} onClick={() => this.sortCompetitionsByDate('desc')} />
                   </div>
                 </th>
                 <th><span className="competitions-list__column-name">Waga</span>
                   <div className="competitions-list__sort-arrows">
-                    <FontAwesomeIcon className="sort-arrow" icon={faSortUp} onClick={() => this.sortCompetitionsBy('importance', 'ASC')} />
-                    <FontAwesomeIcon className="sort-arrow" icon={faSortDown} onClick={() => this.sortCompetitionsBy('importance', 'DESC')} />
+                    <FontAwesomeIcon className="sort-arrow" icon={faSortUp} onClick={() => this.sortCompetitionsByImportance('asc')} />
+                    <FontAwesomeIcon className="sort-arrow" icon={faSortDown} onClick={() => this.sortCompetitionsByImportance('desc')} />
                   </div>
                 </th>
               </tr>
@@ -91,7 +139,7 @@ class CompetitionsList extends Component {
                   (
                     <tr key={competition.id} className="competitions-list__row">
                       <td><Link to={'/competition/' + competition.id} className="competitions-list__link">{competition.name}</Link></td>
-                      <td><Link to={'/competition/' + competition.id} className="competitions-list__link">{competition.location.name}</Link></td>
+                      <td><Link to={'/competition/' + competition.id} className="competitions-list__link">{competition.location}</Link></td>
                       <td><Link to={'/competition/' + competition.id} className="competitions-list__link">{competition.year}</Link></td>
                       <td><Link to={'/competition/' + competition.id} className="competitions-list__link">{competition.importance}</Link></td>
                     </tr>
