@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import stable from 'stable';
+
 class CompetitionsList extends Component {
 
   constructor(props) {
@@ -23,13 +24,13 @@ class CompetitionsList extends Component {
     const asc = (a, b) => String(a.name).localeCompare(b.name);
     const desc = (a, b) => (-1) * String(a.name).localeCompare(b.name);
     let competitionsCopy = this.state.competitions;
-    
-    if(direction === 'asc') {
-    stable.inplace(competitionsCopy, asc);
-    } else if(direction === 'desc') {
-      stable.inplace(competitionsCopy,desc);
+
+    if (direction === 'asc') {
+      stable.inplace(competitionsCopy, asc);
+    } else if (direction === 'desc') {
+      stable.inplace(competitionsCopy, desc);
     }
-    this.setState({competitions: competitionsCopy});
+    this.setState({ competitions: competitionsCopy });
   }
 
   sortCompetitionsByLocation(direction) {
@@ -49,12 +50,12 @@ class CompetitionsList extends Component {
   sortCompetitionsByDate(direction) {
     console.log('sorting by date ' + direction);
 
-    const asc = function(a, b) { 
-      if(new Date(a.year).getTime() > new Date(b.year).getTime()) {
+    const asc = function (a, b) {
+      if (new Date(a.year).getTime() > new Date(b.year).getTime()) {
         return 1;
       } else if (new Date(a.year).getTime() < new Date(b.year).getTime()) {
         return -1;
-      } 
+      }
       else {
         return 0;
       }
@@ -107,32 +108,36 @@ class CompetitionsList extends Component {
           <table className="competitions-list__table">
             <thead className="competitions-list__header">
               <tr>
-                <th><span className="competitions-list__column-name">Nazwa</span>
+                <th><div className="th-wrapper"><span className="competitions-list__column-name">Nazwa</span>
                   <div className="competitions-list__sort-arrows">
                     <FontAwesomeIcon className="sort-arrow" icon={faSortUp} onClick={() => this.sortCompetitionsByName('asc')} />
                     <FontAwesomeIcon className="sort-arrow" icon={faSortDown} onClick={() => this.sortCompetitionsByName('desc')} />
                   </div>
+                </div>
                 </th>
-                <th><span className="competitions-list__column-name">Lokalizacja</span>
+                <th><div className="th-wrapper"><span className="competitions-list__column-name">Lokalizacja</span>
                   <div className="competitions-list__sort-arrows">
                     <FontAwesomeIcon className="sort-arrow" icon={faSortUp} onClick={() => this.sortCompetitionsByLocation('asc')} />
                     <FontAwesomeIcon className="sort-arrow" icon={faSortDown} onClick={() => this.sortCompetitionsByLocation('desc')} />
                   </div>
+                </div>
                 </th>
-                <th><span className="competitions-list__column-name">Data</span>
+                <th><div className="th-wrapper"><span className="competitions-list__column-name">Data</span>
                   <div className="competitions-list__sort-arrows">
                     <FontAwesomeIcon className="sort-arrow" icon={faSortUp} onClick={() => this.sortCompetitionsByDate('asc')} />
                     <FontAwesomeIcon className="sort-arrow" icon={faSortDown} onClick={() => this.sortCompetitionsByDate('desc')} />
                   </div>
+                </div>
                 </th>
-                <th><span className="competitions-list__column-name">Waga</span>
+                <th><div className="th-wrapper"><span className="competitions-list__column-name">Waga</span>
                   <div className="competitions-list__sort-arrows">
                     <FontAwesomeIcon className="sort-arrow" icon={faSortUp} onClick={() => this.sortCompetitionsByImportance('asc')} />
                     <FontAwesomeIcon className="sort-arrow" icon={faSortDown} onClick={() => this.sortCompetitionsByImportance('desc')} />
                   </div>
+                </div>
                 </th>
               </tr>
-            </thead >
+            </thead>
             <tbody className="competitions-list__body">
               {
                 this.state.competitions.map((competition) =>

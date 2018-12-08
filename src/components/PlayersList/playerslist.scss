@@ -13,10 +13,17 @@
     vertical-align: middle;
     font-weight: bold;
 
+    .th-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
 .players-list__sort-arrows {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         justify-content: center;
+        width: 20px;
 
         .sort-arrow {
             width: 20px;

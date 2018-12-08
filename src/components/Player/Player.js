@@ -3,6 +3,9 @@ import './player.scss';
 import Loader from '../Loader/Loader';
 import { Line as LineChart, Bar as BarChart } from 'react-chartjs';
 import { Link } from 'react-router-dom';
+import stable from 'stable';
+import { faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Player extends Component {
 
@@ -19,12 +22,86 @@ class Player extends Component {
         fetch('https://fsranking.herokuapp.com/players/' + this.props.match.params.id + '/history')
             .then(response => response.json())
             .then(json => this.setState({ history: json }));
+    }
 
+    sortHistoryByPlace(direction) {
+        console.log('sorting by place ' + direction);
+        const asc = (a, b) => (a.place - b.place);
+        const desc = (a, b) => (b.place - a.place);
+        let historyCopy = this.state.history;
+
+        if (direction === 'asc') {
+            stable.inplace(historyCopy, asc);
+        } else if (direction === 'desc') {
+            stable.inplace(historyCopy, desc);
+        }
+        this.setState({ history: historyCopy });
+    }
+
+    sortHistoryByCompetition(direction) {
+        console.log('sorting history by competition name' + direction);
+        const asc = (a, b) => String(a.competition.name).localeCompare(b.competition.name);
+        const desc = (a, b) => (-1) * String(a.competition.name).localeCompare(b.competition.name);
+        let historyCopy = this.state.history;
+
+        if (direction === 'asc') {
+            stable.inplace(historyCopy, asc);
+        } else if (direction === 'desc') {
+            stable.inplace(historyCopy, desc);
+        }
+        this.setState({ history: historyCopy });
+    }
+
+    sortHistoryByCategory(direction) {
+        console.log('sorting history by category ' + direction);
+        const asc = (a, b) => String(a.category).localeCompare(b.category);
+        const desc = (a, b) => (-1) * String(a.category).localeCompare(b.category);
+        let historyCopy = this.state.history;
+
+        if (direction === 'asc') {
+            stable.inplace(historyCopy, asc);
+        } else if (direction === 'desc') {
+            stable.inplace(historyCopy, desc);
+        }
+        this.setState({ history: historyCopy });
+    }
+
+    sortHistoryByDate(direction) {
+        console.log('sorting history by date ' + direction);
+
+        const asc = function (a, b) {
+            if (new Date(a.date).getTime() > new Date(b.date).getTime()) {
+                return 1;
+            } else if (new Date(a.date).getTime() < new Date(b.date).getTime()) {
+                return -1;
+            }
+            else {
+                return 0;
+            }
+        }
+        const desc = function (a, b) {
+            if (new Date(a.date).getTime() > new Date(b.date).getTime()) {
+                return -1;
+            } else if (new Date(a.date).getTime() < new Date(b.date).getTime()) {
+                return 1;
+            }
+            else {
+                return 0;
+            }
+        }
+        let historyCopy = this.state.history;
+
+        if (direction === 'asc') {
+            stable.inplace(historyCopy, asc);
+        } else if (direction === 'desc') {
+            stable.inplace(historyCopy, desc);
+        }
+        this.setState({ history: historyCopy });
     }
 
     validateData() {
         return this.state.firstName !== undefined && this.state.history !== undefined;
-      }
+    }
 
     render() {
         let imageStyle = {
@@ -140,19 +217,43 @@ class Player extends Component {
                 <table className="player__history">
                     <thead className="history__header">
                         <tr>
-                            <th>Miejsce</th>
-                            <th>Zawody</th>
-                            <th>Konkurencja</th>
-                            <th>Data</th>
+                            <th><div className="th-wrapper"><span className="history__column-name">Miejsce</span>
+                                <div className="history__sort-arrows">
+                                    <FontAwesomeIcon className="sort-arrow" icon={faSortUp} onClick={() => this.sortHistoryByPlace('asc')} />
+                                    <FontAwesomeIcon className="sort-arrow" icon={faSortDown} onClick={() => this.sortHistoryByPlace('desc')} />
+                                </div>
+                            </div>
+                            </th>
+                            <th><div className="th-wrapper"><span className="history__column-name">Zawody</span>
+                                <div className="history__sort-arrows">
+                                    <FontAwesomeIcon className="sort-arrow" icon={faSortUp} onClick={() => this.sortHistoryByCompetition('asc')} />
+                                    <FontAwesomeIcon className="sort-arrow" icon={faSortDown} onClick={() => this.sortHistoryByCompetition('desc')} />
+                                </div>
+                            </div>
+                            </th>
+                            <th><div className="th-wrapper"><span className="history__column-name">Konkurencja</span>
+                                <div className="history__sort-arrows">
+                                    <FontAwesomeIcon className="sort-arrow" icon={faSortUp} onClick={() => this.sortHistoryByCategory('asc')} />
+                                    <FontAwesomeIcon className="sort-arrow" icon={faSortDown} onClick={() => this.sortHistoryByCategory('desc')} />
+                                </div>
+                            </div>
+                            </th>
+                            <th><div className="th-wrapper"><span className="history__column-name">Data</span>
+                                <div className="history__sort-arrows">
+                                    <FontAwesomeIcon className="sort-arrow" icon={faSortUp} onClick={() => this.sortHistoryByDate('asc')} />
+                                    <FontAwesomeIcon className="sort-arrow" icon={faSortDown} onClick={() => this.sortHistoryByDate('desc')} />
+                                </div>
+                            </div>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
                         {this.state.history.map((entry) =>
                             <tr key={i++} className="history__row">
-                                <td>{entry.place + '.'}</td>
-                                <td><Link to={'/competition/' + entry.competition.id}>{entry.competition.name}</Link></td>
-                                <td>{entry.category}</td>
-                                <td>{entry.date}</td>
+                                <td><Link to={'/competition/' + entry.competition.id} className="history__link">{entry.place + '.'}</Link></td>
+                                <td><Link to={'/competition/' + entry.competition.id} className="history__link">{entry.competition.name}</Link></td>
+                                <td><Link to={'/competition/' + entry.competition.id} className="history__link">{entry.category}</Link></td>
+                                <td><Link to={'/competition/' + entry.competition.id} className="history__link">{entry.date}</Link></td>
                             </tr>
                         )
                         }

@@ -16,6 +16,12 @@ class PlayersList extends Component {
   componentDidMount() {
     fetch('https://fsranking.herokuapp.com/players')
       .then(response => response.json())
+      .then(players => players.map(function (player) {
+        if (player.nick === null) {
+          player.nick = '-';
+        }
+        return player;
+      }))
       .then(json => this.setState({ players: json }))
   }
 
@@ -36,7 +42,7 @@ class PlayersList extends Component {
   sortPlayersByNick(direction) {
     console.log('sorting by nick ' + direction);
     const asc = (a, b) => String(a.nick).localeCompare(b.nick);
-    const desc = (a, b) => (-1)*String(a.nick).localeCompare(b.nick);
+    const desc = (a, b) => (-1) * String(a.nick).localeCompare(b.nick);
     let playersCopy = this.state.players;
 
     if (direction === 'asc') {
@@ -90,29 +96,33 @@ class PlayersList extends Component {
         <table className="players-list__table">
           <thead className="players-list__header">
             <tr>
-              <th><span className="players-list__column-name">Imię i nazwisko</span>
+              <th><div className="th-wrapper"><span className="players-list__column-name">Imię i nazwisko</span>
                 <div className="players-list__sort-arrows">
                   <FontAwesomeIcon className="sort-arrow" icon={faSortUp} onClick={() => this.sortPlayersByName('asc')} />
                   <FontAwesomeIcon className="sort-arrow" icon={faSortDown} onClick={() => this.sortPlayersByName('desc')} />
                 </div>
+              </div>
               </th>
-              <th><span className="players-list__column-name">Nick</span>
+              <th><div className="th-wrapper"><span className="players-list__column-name">Nick</span>
                 <div className="players-list__sort-arrows">
                   <FontAwesomeIcon className="sort-arrow" icon={faSortUp} onClick={() => this.sortPlayersByNick('asc')} />
                   <FontAwesomeIcon className="sort-arrow" icon={faSortDown} onClick={() => this.sortPlayersByNick('desc')} />
                 </div>
+              </div>
               </th>
-              <th><span className="players-list__column-name">Wiek</span>
+              <th><div className="th-wrapper"><span className="players-list__column-name">Wiek</span>
                 <div className="players-list__sort-arrows">
                   <FontAwesomeIcon className="sort-arrow" icon={faSortUp} onClick={() => this.sortPlayersByAge('asc')} />
                   <FontAwesomeIcon className="sort-arrow" icon={faSortDown} onClick={() => this.sortPlayersByAge('desc')} />
                 </div>
+              </div>
               </th>
-              <th><span className="players-list__column-name">Narodowość</span>
+              <th><div className="th-wrapper"><span className="players-list__column-name">Narodowość</span>
                 <div className="players-list__sort-arrows">
                   <FontAwesomeIcon className="sort-arrow" icon={faSortUp} onClick={() => this.sortPlayersByNationality('asc')} />
                   <FontAwesomeIcon className="sort-arrow" icon={faSortDown} onClick={() => this.sortPlayersByNationality('desc')} />
                 </div>
+              </div>
               </th>
             </tr>
           </thead>

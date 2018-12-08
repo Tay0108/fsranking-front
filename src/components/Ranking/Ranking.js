@@ -16,7 +16,7 @@ class Ranking extends Component {
   componentDidMount() {
     fetch('http://fsranking.herokuapp.com/rankings/battle')
       .then(response => response.json())
-      .then(json => this.setState({ players: json })); 
+      .then(json => this.setState({ players: json }));
   }
 
   render() {
@@ -24,60 +24,62 @@ class Ranking extends Component {
     let top3 = [];
     let players = [];
 
-    if(this.state.players != null) {
-      this.state.players.sort((a, b) => (-1)*(a.points - b.points))
-      top3 = this.state.players.slice(0,3);
+    if (this.state.players != null) {
+      this.state.players.sort((a, b) => (-1) * (a.points - b.points))
+      top3 = this.state.players.slice(0, 3);
       players = this.state.players.slice(3, this.state.players.length);
     }
 
     let place = 4;
 
-    return (
-      players.length === 0 ?
-        (<Loader
+    if (players.length === 0) {
+      return (
+        <Loader
           color="#010021"
           height="200"
           width="200"
-        />)
-        :
+        />
+      );
+    }
 
-        (<section className="ranking">
+    return (
+      <section className="ranking">
 
-          <ul className="ranking__top-list">
-            <li><RankingTopPlayer player={top3[0]} color='#ffd700' /></li>
-            <li><RankingTopPlayer player={top3[1]} color='#c0c0c0' /></li>
-            <li><RankingTopPlayer player={top3[2]} color='#905923' /></li>
-          </ul>
-          <table className="ranking__table">
-            <thead className="ranking__header">
-              <tr>
-                <th>Miejsce</th>
-                <th>Imię i nazwisko</th>
-                <th>Wiek</th>
-                <th>Narodowosc</th>
-                <th>Punkty</th>
-                <th>Trend</th>
-              </tr>
-            </thead>
-            <tbody className="ranking__body">
-              {
-                players.map((player) =>
-                  (
-                    <tr key={player.idPlayer} className="ranking__row">
+        <ul className="ranking__top-list">
+          <li><RankingTopPlayer player={top3[0]} color='#ffd700' /></li>
+          <li><RankingTopPlayer player={top3[1]} color='#c0c0c0' /></li>
+          <li><RankingTopPlayer player={top3[2]} color='#905923' /></li>
+        </ul >
+        <table className="ranking__table">
+          <thead className="ranking__header">
+            <tr>
+              <th>Miejsce</th>
+              <th>Imię i nazwisko</th>
+              <th>Wiek</th>
+              <th>Narodowosc</th>
+              <th>Punkty</th>
+              <th>Trend</th>
+            </tr>
+          </thead>
+          <tbody className="ranking__body">
+            {
+              players.map((player) =>
+                (
+                  <tr key={player.idPlayer} className="ranking__row">
                     <td><Link to={'/player/' + player.idPlayer} className="ranking__link">{place++}.</Link></td>
                     <td><Link to={'/player/' + player.idPlayer} className="ranking__link">{player.firstName + ' ' + player.lastName}</Link></td>
                     <td><Link to={'/player/' + player.idPlayer} className="ranking__link">{player.age}</Link></td>
                     <td><Link to={'/player/' + player.idPlayer} className="ranking__link"><img className="ranking__flag" src={'/img/flags/' + player.nationality + '.svg'} alt="Poland" /></Link></td>
                     <td><Link to={'/player/' + player.idPlayer} className="ranking__link">{player.points}</Link></td>
                     <td><Link to={'/player/' + player.idPlayer} className="ranking__link">up</Link></td>
-                    </tr>
-                  )
+                  </tr>
                 )
-              }
-            </tbody>
-          </table>
-        </section>
-        )
+              )
+            }
+          </tbody>
+        </table>
+      </section >
+
     );
   }
 }

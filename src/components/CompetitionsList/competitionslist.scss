@@ -13,10 +13,17 @@
     vertical-align: middle;
     font-weight: bold;
 
-    .competitions-list__sort-arrows {
+    .th-wrapper {
         display: flex;
-        flex-direction: row;
         justify-content: center;
+        align-items: center;
+    }
+
+.competitions-list__sort-arrows {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 20px;
 
         .sort-arrow {
             width: 20px;
@@ -24,6 +31,7 @@
             cursor: pointer;
         }
     }
+
 }
 
 .competitions-list__body {
