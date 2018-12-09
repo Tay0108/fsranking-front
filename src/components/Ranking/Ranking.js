@@ -14,7 +14,7 @@ class Ranking extends Component {
   }
 
   componentDidMount() {
-    fetch('http://fsranking.herokuapp.com/rankings/battle')
+    fetch('https://fsranking.herokuapp.com/rankings/battle')
       .then(response => response.json())
       .then(json => this.setState({ players: json }));
   }

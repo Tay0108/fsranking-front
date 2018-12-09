@@ -19,9 +19,9 @@ class Player extends Component {
             .then(response => response.json())
             .then(json => this.setState(json));
 
-        fetch('https://fsranking.herokuapp.com/players/' + this.props.match.params.id + '/history')
+        fetch('https://fsranking.herokuapp.com/players/' + this.props.match.params.id + '/statistics')
             .then(response => response.json())
-            .then(json => this.setState({ history: json }));
+            .then(json => this.setState(json));
     }
 
     sortHistoryByPlace(direction) {
