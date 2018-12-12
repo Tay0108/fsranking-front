@@ -28,42 +28,42 @@ class Player extends Component {
         console.log('sorting by place ' + direction);
         const asc = (a, b) => (a.place - b.place);
         const desc = (a, b) => (b.place - a.place);
-        let historyCopy = this.state.history;
+        let historyCopy = this.state.scoreHistory;
 
         if (direction === 'asc') {
             stable.inplace(historyCopy, asc);
         } else if (direction === 'desc') {
             stable.inplace(historyCopy, desc);
         }
-        this.setState({ history: historyCopy });
+        this.setState({ scoreHistory: historyCopy });
     }
 
     sortHistoryByCompetition(direction) {
         console.log('sorting history by competition name' + direction);
         const asc = (a, b) => String(a.competition.name).localeCompare(b.competition.name);
         const desc = (a, b) => (-1) * String(a.competition.name).localeCompare(b.competition.name);
-        let historyCopy = this.state.history;
+        let historyCopy = this.state.scoreHistory;
 
         if (direction === 'asc') {
             stable.inplace(historyCopy, asc);
         } else if (direction === 'desc') {
             stable.inplace(historyCopy, desc);
         }
-        this.setState({ history: historyCopy });
+        this.setState({ scoreHistory: historyCopy });
     }
 
     sortHistoryByCategory(direction) {
         console.log('sorting history by category ' + direction);
         const asc = (a, b) => String(a.category).localeCompare(b.category);
         const desc = (a, b) => (-1) * String(a.category).localeCompare(b.category);
-        let historyCopy = this.state.history;
+        let historyCopy = this.state.scoreHistory;
 
         if (direction === 'asc') {
             stable.inplace(historyCopy, asc);
         } else if (direction === 'desc') {
             stable.inplace(historyCopy, desc);
         }
-        this.setState({ history: historyCopy });
+        this.setState({ scoreHistory: historyCopy });
     }
 
     sortHistoryByDate(direction) {
@@ -89,18 +89,18 @@ class Player extends Component {
                 return 0;
             }
         }
-        let historyCopy = this.state.history;
+        let historyCopy = this.state.scoreHistory;
 
         if (direction === 'asc') {
             stable.inplace(historyCopy, asc);
         } else if (direction === 'desc') {
             stable.inplace(historyCopy, desc);
         }
-        this.setState({ history: historyCopy });
+        this.setState({ scoreHistory: historyCopy });
     }
 
     validateData() {
-        return this.state.firstName !== undefined && this.state.history !== undefined;
+        return this.state.firstName !== undefined && this.state.scoreHistory !== undefined;
     }
 
     render() {
@@ -248,7 +248,7 @@ class Player extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.state.history.map((entry) =>
+                        {this.state.scoreHistory.map((entry) =>
                             <tr key={i++} className="history__row">
                                 <td><Link to={'/competition/' + entry.competition.id} className="history__link">{entry.place + '.'}</Link></td>
                                 <td><Link to={'/competition/' + entry.competition.id} className="history__link">{entry.competition.name}</Link></td>
