@@ -34,6 +34,7 @@
             right: 10px;
             top: 10px;
             cursor: pointer;
+            border-radius: 5px;
         }
         .app-header__hamburger--hidden {
             visibility: hidden;
@@ -70,6 +71,7 @@
             width: 30px;
             padding: 0;
             cursor: pointer;
+            border-radius: 5px;
         }
 
         .page-nav__links {

@@ -3,6 +3,25 @@
     margin: 0 auto;
     margin-bottom: 50px;
 
+    .show-filters-wrapper {
+        background-color: rgba(0,0,0,0.6);
+        text-align: center;
+        padding: 15px 0;
+
+        .show-filters-button {
+            border: none;
+            background-color: #000000;
+            border-radius: 15px;
+            color: #ffffff;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .show-filters-button:hover {
+            background-color: #3786e5;
+        }
+    }
+
     .ranking__top-list {
         display: flex;
         flex-direction: column;
@@ -57,6 +76,44 @@
     .ranking__flag {
         width: 20px;
         height: auto;
+    }
+
+    .filters {
+        display: none;
+        background-color: #000000;
+        color: #ffffff;
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 30px;
+    }
+
+    .filters--open {
+        display: block;
+    }
+
+    .filter-title {
+        text-align: center;
+        font-size: 1.7em;
+    }
+
+    .filters__sharp {
+        background-color: #000000;
+        border: 1px solid #ffffff;
+        color: #ffffff;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        height: 30px;
+        width: 30px;
+        padding: 0;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .filter-slider {
+
     }
     
 }

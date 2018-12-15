@@ -3,6 +3,12 @@ import './ranking.scss';
 import RankingTopPlayer from './RankingTopPlayer';
 import Loader from '../Loader/Loader';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes, faArrowUp, faArrowDown, faBullseye } from '@fortawesome/free-solid-svg-icons';
+import 'rc-slider/assets/index.css'
+import Slider, { Range } from 'rc-slider';
+
+let place = 4;
 
 class Ranking extends Component {
 
@@ -19,6 +25,46 @@ class Ranking extends Component {
       .then(json => this.setState({ players: json }));
   }
 
+  showFilters() {
+    document.querySelector('.filters').classList.add('filters--open');
+  }
+
+  closeFilters() {
+    document.querySelector('.filters').classList.remove('filters--open');
+  }
+
+  filterByDate() {
+    console.log('filter by date');
+  }
+
+  showPlayer(player) {
+    let trend = faBullseye;
+    let style = {
+      color: 'grey',
+    };
+
+    if (player.trend === 'UP') {
+      trend = faArrowUp;
+      style = {
+        color: 'green',
+      };
+    } else if (player.trend === 'DOWN') {
+      trend = faArrowDown;
+      style = {
+        color: 'red',
+      };
+    }
+    return (
+      <tr key={player.idPlayer} className="ranking__row">
+        <td><Link to={'/player/' + player.idPlayer} className="ranking__link">{place++}.</Link></td>
+        <td><Link to={'/player/' + player.idPlayer} className="ranking__link">{player.firstName + ' ' + player.lastName}</Link></td>
+        <td><Link to={'/player/' + player.idPlayer} className="ranking__link">{player.age}</Link></td>
+        <td><Link to={'/player/' + player.idPlayer} className="ranking__link"><img className="ranking__flag" src={'/img/flags/' + player.nationality + '.svg'} alt="Poland" /></Link></td>
+        <td><Link to={'/player/' + player.idPlayer} className="ranking__link">{player.points}</Link></td>
+        <td><Link to={'/player/' + player.idPlayer} className="ranking__link"><FontAwesomeIcon style={style} icon={trend} /></Link></td>
+      </tr>);
+  }
+
   render() {
 
     let top3 = [];
@@ -29,8 +75,6 @@ class Ranking extends Component {
       top3 = this.state.players.slice(0, 3);
       players = this.state.players.slice(3, this.state.players.length);
     }
-
-    let place = 4;
 
     if (players.length === 0) {
       return (
@@ -44,6 +88,18 @@ class Ranking extends Component {
 
     return (
       <section className="ranking">
+
+        <div className="filters">
+          <button type="button" className="filters__sharp" onClick={this.closeFilters}><FontAwesomeIcon icon={faTimes} /></button>
+          <h3 className="filter-title">Filtr daty:</h3>
+          <h3 className="filter-title">Filtr wieku:</h3>
+          <Range className="filter-slider" allowCross={false} min={0} max={100} defaultValue={[0, 100]} onChange={() => this.filterByDate()} />
+          <h3 className="filter-title">Filtr narodowosci:</h3>
+          <h3 className="filter-title">Filtr kategorii:</h3>
+        </div>
+        <div className="show-filters-wrapper">
+          <button className="show-filters-button" onClick={() => this.showFilters()}>Filtruj ranking</button>
+        </div>
 
         <ul className="ranking__top-list">
           <li><RankingTopPlayer player={top3[0]} color='#ffd700' /></li>
@@ -62,20 +118,7 @@ class Ranking extends Component {
             </tr>
           </thead>
           <tbody className="ranking__body">
-            {
-              players.map((player) =>
-                (
-                  <tr key={player.idPlayer} className="ranking__row">
-                    <td><Link to={'/player/' + player.idPlayer} className="ranking__link">{place++}.</Link></td>
-                    <td><Link to={'/player/' + player.idPlayer} className="ranking__link">{player.firstName + ' ' + player.lastName}</Link></td>
-                    <td><Link to={'/player/' + player.idPlayer} className="ranking__link">{player.age}</Link></td>
-                    <td><Link to={'/player/' + player.idPlayer} className="ranking__link"><img className="ranking__flag" src={'/img/flags/' + player.nationality + '.svg'} alt="Poland" /></Link></td>
-                    <td><Link to={'/player/' + player.idPlayer} className="ranking__link">{player.points}</Link></td>
-                    <td><Link to={'/player/' + player.idPlayer} className="ranking__link">up</Link></td>
-                  </tr>
-                )
-              )
-            }
+            {players.map((player) => this.showPlayer(player))}
           </tbody>
         </table>
       </section >

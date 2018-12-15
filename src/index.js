@@ -7,7 +7,7 @@ import * as serviceWorker from './serviceWorker';
 import ScrollTop from './components/ScrollTop/ScrollTop';
 
 ReactDOM.render((
-    <BrowserRouter >
+    <BrowserRouter>
         <ScrollTop>
             <App />
         </ScrollTop>
