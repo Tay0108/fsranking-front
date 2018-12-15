@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faArrowUp, faArrowDown, faBullseye } from '@fortawesome/free-solid-svg-icons';
 import 'rc-slider/assets/index.css'
-import Slider, { Range } from 'rc-slider';
+import { Range } from 'rc-slider';
 
 let place = 4;
 
