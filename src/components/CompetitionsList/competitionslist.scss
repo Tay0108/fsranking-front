@@ -12,26 +12,22 @@
     height: 50px;
     vertical-align: middle;
     font-weight: bold;
-
     .th-wrapper {
         display: flex;
         justify-content: center;
         align-items: center;
     }
-
-.competitions-list__sort-arrows {
+    .competitions-list__sort-arrows {
         display: flex;
         flex-direction: column;
         justify-content: center;
         width: 20px;
-
         .sort-arrow {
             width: 20px;
             height: 20px;
             cursor: pointer;
         }
     }
-
 }
 
 .competitions-list__body {
@@ -57,14 +53,26 @@
 }
 
 .competitions-list__row:nth-child(2n-1) {
-    background-color: rgba(199,199,200,0.7);
+    background-color: rgba(199, 199, 200, 0.7);
 }
 
 .competitions-list__row:nth-child(2n) {
-    background-color: rgba(168,168,169,0.7);
+    background-color: rgba(168, 168, 169, 0.7);
 }
 
 .competitions-list__flag {
     width: 20px;
     height: auto;
 }
+
+// TABLET
+@media only screen and (min-width: 768px) {
+    .competitions-list {
+        width: 700px;
+        margin: 50px auto;
+
+    }
+}
+
+// DESKTOP
+@media only screen and (min-width: 1200px) {}

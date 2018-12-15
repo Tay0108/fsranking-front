@@ -1,9 +1,7 @@
 .player {
-
-    background-color: rgba(0,0,0,0.6);
+    background-color: rgba(0, 0, 0, 0.6);
     text-align: center;
     padding-top: 30px;
-
     .player__image {
         display: block;
         border-radius: 50%;
@@ -12,91 +10,70 @@
         width: 55%;
         height: auto;
     }
-
     .player__name {
         color: #FFFFFF;
         display: block;
         font-size: 1.5em;
         margin: 10px 0;
     }
-
     .player__flag {
         width: 30px;
         margin: 0 auto;
     }
-
-    .player__social-media {
-
-    }
-
+    .player__social-media {}
     .player__charts {
         margin-top: 30px;
     }
-
     .charts__chart {
         margin-bottom: 20px;
     }
-
     .player__title {
         color: #ffffff;
         font-size: 2em;
         margin-bottom: 20px;
     }
-
-
     .player__history {
         width: 100%;
         text-align: center;
     }
-
     .history__header {
         background-color: rgba(80, 111, 148, 0.7);
         box-sizing: border-box;
     }
-
     .history__header th {
         height: 50px;
         vertical-align: middle;
         font-weight: bold;
-    
         .th-wrapper {
             display: flex;
             justify-content: center;
             align-items: center;
         }
-    
-    .history__sort-arrows {
+        .history__sort-arrows {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             width: 15px;
-    
             .sort-arrow {
                 width: 15px;
                 height: 15px;
                 cursor: pointer;
             }
         }
-    
     }
-
     .history__row {
         box-sizing: border-box;
         height: 30px;
     }
-
     .history__row td {
         vertical-align: middle;
     }
-
     .history__row:nth-child(2n-1) {
-        background-color: rgba(199,199,200,0.7);
+        background-color: rgba(199, 199, 200, 0.7);
     }
-
     .history__row:nth-child(2n) {
-        background-color: rgba(168,168,169,0.7);
+        background-color: rgba(168, 168, 169, 0.7);
     }
-
     .history__link {
         display: block;
         width: 100%;
@@ -105,3 +82,14 @@
         color: #000000;
     }
 }
+
+// TABLET
+@media only screen and (min-width: 768px) {
+    .player {
+        width: 700px;
+        margin: 50px auto;
+    }
+}
+
+// DESKTOP
+@media only screen and (min-width: 1200px) {}

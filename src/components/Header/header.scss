@@ -89,3 +89,13 @@
         }
     }
 }
+
+// TABLET
+@media only screen and (min-width: 768px) {
+    .app-header {
+        width: 700px;
+    }
+}
+
+// DESKTOP
+@media only screen and (min-width: 1200px) {}

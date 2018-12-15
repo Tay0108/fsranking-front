@@ -84,11 +84,7 @@ class PlayersList extends Component {
   render() {
 
     if (this.state.players === undefined) {
-      return (<Loader
-        color="#010021"
-        height="200"
-        width="200"
-      />);
+      return (<Loader color="#010021" height="200" width="200"/>);
     }
 
     return (

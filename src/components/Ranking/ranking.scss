@@ -2,12 +2,10 @@
     width: 100%;
     margin: 0 auto;
     margin-bottom: 50px;
-
     .show-filters-wrapper {
-        background-color: rgba(0,0,0,0.6);
+        background-color: rgba(0, 0, 0, 0.6);
         text-align: center;
         padding: 15px 0;
-
         .show-filters-button {
             border: none;
             background-color: #000000;
@@ -16,38 +14,31 @@
             padding: 10px 20px;
             cursor: pointer;
         }
-
         .show-filters-button:hover {
             background-color: #3786e5;
         }
     }
-
     .ranking__top-list {
         display: flex;
         flex-direction: column;
     }
-
     .ranking__table {
         width: 100%;
         text-align: center;
     }
-
     .ranking__header {
         background-color: rgba(80, 111, 148, 0.7);
         box-sizing: border-box;
     }
-
     .ranking__header th {
         height: 50px;
         vertical-align: middle;
         font-weight: bold;
     }
-
     .ranking__body {
         font-family: 'Roboto';
         font-weight: 500;
     }
-
     .ranking__link {
         display: block;
         width: 100%;
@@ -55,49 +46,47 @@
         text-decoration: none;
         color: #000000;
     }
-
     .ranking__row {
         box-sizing: border-box;
         height: 30px;
     }
-
     .ranking__row td {
         vertical-align: middle;
     }
-
     .ranking__row:nth-child(2n-1) {
-        background-color: rgba(199,199,200,0.7);
+        background-color: rgba(199, 199, 200, 0.7);
     }
-
     .ranking__row:nth-child(2n) {
-        background-color: rgba(168,168,169,0.7);
+        background-color: rgba(168, 168, 169, 0.7);
     }
-
     .ranking__flag {
         width: 20px;
         height: auto;
     }
-
     .filters {
         display: none;
         background-color: #000000;
         color: #ffffff;
-        position: fixed;
+        position: relative;
         height: 100%;
         width: 100%;
         box-sizing: border-box;
-        padding: 30px;
+        padding: 10px 30px 30px 30px;
+        text-align: center;
     }
-
     .filters--open {
         display: block;
     }
-
+    .filters-title {
+        text-align: center;
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
     .filter-title {
         text-align: center;
         font-size: 1.7em;
+        margin: 20px 0 20px 0;
     }
-
     .filters__sharp {
         background-color: #000000;
         border: 1px solid #ffffff;
@@ -111,9 +100,43 @@
         cursor: pointer;
         border-radius: 5px;
     }
-
     .filter-slider {
-
+        width: 80%;
+        margin: 0 auto;
     }
-    
+    .filter__chip {
+        width: 80%;
+    }
+    .chip__input {
+        color: #ffffff;
+        width: 100%;
+        border: 1px solid #ffffff;
+        border-radius: 5px;
+    }
+    .chip__input:focus {
+        border: 1px solid #ffffff;
+    }
+    .filter__date-input {
+        border: 1px solid #ffffff;
+        border-radius: 5px;
+    }
 }
+
+// TABLET
+@media only screen and (min-width: 768px) {
+    .ranking {
+        width: 700px;
+        .show-filters-wrapper {
+            background: none;
+        }
+        .ranking__top-list {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+    }
+}
+
+// DESKTOP
+@media only screen and (min-width: 1200px) {}

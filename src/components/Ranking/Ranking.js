@@ -7,6 +7,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faArrowUp, faArrowDown, faBullseye } from '@fortawesome/free-solid-svg-icons';
 import 'rc-slider/assets/index.css'
 import { Range } from 'rc-slider';
+import ChipInput from 'material-ui-chip-input';
+import TextField from '@material-ui/core/TextField';
 
 let place = 4;
 
@@ -16,6 +18,9 @@ class Ranking extends Component {
     super(props);
     this.state = {
       players: null,
+      nationalityFilter: ['POL'],
+      ageFilterLeft: 0,
+      ageFilterRight: 40,
     };
   }
 
@@ -33,8 +38,16 @@ class Ranking extends Component {
     document.querySelector('.filters').classList.remove('filters--open');
   }
 
-  filterByDate() {
-    console.log('filter by date');
+  filterByAge(value) {
+    this.setState({
+       ageFilterLeft: value[0],
+       ageFilterRight: value[1],
+     });
+  }
+
+  filterByNationality(event) {
+    console.log('filter by nationality');
+    this.setState({nationalityFilter: event.target.value}); 
   }
 
   showPlayer(player) {
@@ -78,11 +91,7 @@ class Ranking extends Component {
 
     if (players.length === 0) {
       return (
-        <Loader
-          color="#010021"
-          height="200"
-          width="200"
-        />
+        <Loader color="#010021" height="200" width="200" />
       );
     }
 
@@ -90,21 +99,39 @@ class Ranking extends Component {
       <section className="ranking">
 
         <div className="filters">
+          <h3 className="filters-title">Filtry:</h3>
           <button type="button" className="filters__sharp" onClick={this.closeFilters}><FontAwesomeIcon icon={faTimes} /></button>
-          <h3 className="filter-title">Filtr daty:</h3>
-          <h3 className="filter-title">Filtr wieku:</h3>
-          <Range className="filter-slider" allowCross={false} min={0} max={100} defaultValue={[0, 100]} onChange={() => this.filterByDate()} />
-          <h3 className="filter-title">Filtr narodowosci:</h3>
-          <h3 className="filter-title">Filtr kategorii:</h3>
+          <h4 className="filter-title">Filtr daty:</h4>
+          <form>
+      <TextField id="date" variant="outlined" type="date" defaultValue="2007-01-01" className="filter__date-input"/>
+       <TextField id="date" variant="outlined" type="date" defaultValue="2018-12-20" className="filter__date-input"/>
+    </form>
+          <h4 className="filter-title">Filtr wieku:</h4>
+          <Range className="filter-slider" allowCross={false} min={0} max={100} defaultValue={[0, 100]} onChange={(value) => this.filterByAge(value)} />
+          <h4 className="filter-title">Filtr narodowosci:</h4>
+          <ChipInput className="filter__chip" variant="outlined"
+            placeholder="Wpisz nazwę kraju" onAdd={(event) => this.filterByNationality(event)}
+            InputProps={{
+              className: 'chip__input',
+            }}
+          />
+          <h4 className="filter-title">Filtr kategorii:</h4>
+          <ChipInput className="filter__chip" variant="outlined"
+            placeholder="Wpisz nazwę kategorii"
+            InputProps={{
+              className: 'chip__input',
+            }}
+          />
         </div>
+
         <div className="show-filters-wrapper">
           <button className="show-filters-button" onClick={() => this.showFilters()}>Filtruj ranking</button>
         </div>
 
         <ul className="ranking__top-list">
-          <li><RankingTopPlayer player={top3[0]} color='#ffd700' /></li>
-          <li><RankingTopPlayer player={top3[1]} color='#c0c0c0' /></li>
-          <li><RankingTopPlayer player={top3[2]} color='#905923' /></li>
+          <RankingTopPlayer player={top3[0]} color='#ffd700' />
+          <RankingTopPlayer player={top3[1]} color='#c0c0c0' />
+          <RankingTopPlayer player={top3[2]} color='#905923' />
         </ul >
         <table className="ranking__table">
           <thead className="ranking__header">
