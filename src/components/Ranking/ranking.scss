@@ -5,7 +5,7 @@
     .show-filters-wrapper {
         background-color: rgba(0, 0, 0, 0.6);
         text-align: center;
-        padding: 15px 0;
+        padding-top: 20px;
         .show-filters-button {
             border: none;
             background-color: #000000;
@@ -17,6 +17,10 @@
         .show-filters-button:hover {
             background-color: #3786e5;
         }
+    }
+    .show-filters-wrapper--clicked {
+        display: none;
+        visibility: hidden;
     }
     .ranking__top-list {
         display: flex;
@@ -116,9 +120,16 @@
     .chip__input:focus {
         border: 1px solid #ffffff;
     }
-    .filter__date-input {
+    .filter__date {
         border: 1px solid #ffffff;
         border-radius: 5px;
+        width: 37%;
+    }
+    .filter__date:first-of-type {
+        margin-right: 6%;
+    }
+    .filter__date-input {
+        color: #ffffff;
     }
 }
 
@@ -134,6 +145,10 @@
             flex-direction: row;
             justify-content: center;
             margin-bottom: 20px;
+            margin-top: 20px;
+        }
+        .filters {
+            margin-top: 20px;
         }
     }
 }

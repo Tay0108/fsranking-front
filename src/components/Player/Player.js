@@ -185,7 +185,10 @@ class Player extends Component {
         return (
             <div className="player">
                 <img className="player__image" src={`/img/players/${this.state.id}_${this.state.lastName}.png`} alt={`${this.state.firstName}  ${this.state.lastName}`} style={imageStyle} onError={(e) => { e.target.onerror = null; e.target.src = "/img/players/notfound.png" }} />
-                <span className="player__name">{`${this.state.firstName} "${this.state.nick}" ${this.state.lastName}`}</span>
+                {/* <span className="player__name">{`${this.state.firstName} "${this.state.nick === null ? '' : this.state.nick}" ${this.state.lastName}`}</span> */}
+                <span className="player__name">{this.state.firstName + ' ' + (this.state.nick === null ? '' : '"' + this.state.nick + '" ') + this.state.lastName}</span>
+               
+               
                 <img className="player__flag" src={`/img/flags/${this.state.nationality}.svg`} alt="Poland" />
 
                 <ul className="player__social-media">

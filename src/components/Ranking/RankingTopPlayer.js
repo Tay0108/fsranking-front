@@ -6,6 +6,10 @@ class RankingTopPlayer extends Component {
 
   render() {
 
+    if(this.props.player === null || this.props.player === undefined) {
+      return null;
+    }
+
     let imageStyle = {
       border: '10px solid' + this.props.color
     };

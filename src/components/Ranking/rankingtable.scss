@@ -1,0 +1,17 @@
+.ranking__table {
+    width: 100%;
+    text-align: center;
+}
+.ranking__header {
+    background-color: rgba(80, 111, 148, 0.7);
+    box-sizing: border-box;
+}
+.ranking__header th {
+    height: 50px;
+    vertical-align: middle;
+    font-weight: bold;
+}
+.ranking__body {
+    font-family: 'Roboto';
+    font-weight: 500;
+}

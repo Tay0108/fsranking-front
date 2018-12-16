@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
-import './ranking.scss';
 import RankingTopPlayer from './RankingTopPlayer';
 import Loader from '../Loader/Loader';
-import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes, faArrowUp, faArrowDown, faBullseye } from '@fortawesome/free-solid-svg-icons';
-import 'rc-slider/assets/index.css'
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { Range, createSliderWithTooltip } from 'rc-slider';
 import ChipInput from 'material-ui-chip-input';
 import TextField from '@material-ui/core/TextField';
+import RankingTable from './RankingTable';
+import 'rc-slider/assets/index.css'
+import './ranking.scss';
 
-let place = 4;
 const SliderWithTooltip = createSliderWithTooltip(Range);
 
 class Ranking extends Component {
@@ -29,7 +28,7 @@ class Ranking extends Component {
   componentDidMount() {
     fetch('https://fsranking.herokuapp.com/rankings/battle')
       .then(response => response.json())
-      .then(json => this.setState({ 
+      .then(json => this.setState({
         playersOrigin: json,
         players: json,
       }));
@@ -37,10 +36,12 @@ class Ranking extends Component {
 
   showFilters() {
     document.querySelector('.filters').classList.add('filters--open');
+    document.querySelector('.show-filters-wrapper').classList.add('show-filters-wrapper--clicked');
   }
 
   closeFilters() {
     document.querySelector('.filters').classList.remove('filters--open');
+    document.querySelector('.show-filters-wrapper').classList.remove('show-filters-wrapper--clicked');
   }
 
   filterByAge(value) {
@@ -52,49 +53,19 @@ class Ranking extends Component {
 
     this.setState({
       players: players,
-     });
+    });
   }
 
   filterByNationality(event) {
     console.log('filter by nationality');
-    this.setState({nationalityFilter: event.target.value}); 
-  }
-
-  showPlayer(player) {
-    
-    let trend = faBullseye;
-    let style = {
-      color: 'grey',
-    };
-
-    if (player.trend === 'UP') {
-      trend = faArrowUp;
-      style = {
-        color: 'green',
-      };
-    } else if (player.trend === 'DOWN') {
-      trend = faArrowDown;
-      style = {
-        color: 'red',
-      };
-    }
-    return (
-      <tr key={player.idPlayer} className="ranking__row">
-        <td><Link to={'/player/' + player.idPlayer} className="ranking__link">{place++}.</Link></td>
-        <td><Link to={'/player/' + player.idPlayer} className="ranking__link">{player.firstName + ' ' + player.lastName}</Link></td>
-        <td><Link to={'/player/' + player.idPlayer} className="ranking__link">{player.age}</Link></td>
-        <td><Link to={'/player/' + player.idPlayer} className="ranking__link"><img className="ranking__flag" src={'/img/flags/' + player.nationality + '.svg'} alt="Poland" /></Link></td>
-        <td><Link to={'/player/' + player.idPlayer} className="ranking__link">{player.points}</Link></td>
-        <td><Link to={'/player/' + player.idPlayer} className="ranking__link"><FontAwesomeIcon style={style} icon={trend} /></Link></td>
-      </tr>);
+    this.setState({ nationalityFilter: event.target.value });
   }
 
   render() {
-
     let top3 = [];
     let players = [];
 
-    if (this.state.players != null && this.state.players != []) {
+    if (this.state.players !== null && this.state.players !== []) {
       this.state.players.sort((a, b) => (-1) * (a.points - b.points))
       top3 = this.state.players.slice(0, 3);
       players = this.state.players.slice(3, this.state.players.length);
@@ -114,9 +85,14 @@ class Ranking extends Component {
           <button type="button" className="filters__sharp" onClick={this.closeFilters}><FontAwesomeIcon icon={faTimes} /></button>
           <h4 className="filter-title">Filtr daty:</h4>
           <form>
-      <TextField id="date" variant="outlined" type="date" defaultValue="2007-01-01" className="filter__date-input"/>
-       <TextField id="date" variant="outlined" type="date" defaultValue="2018-12-20" className="filter__date-input"/>
-    </form>
+            <TextField id="dateFrom" variant="outlined" type="date" defaultValue="2007-01-01" className="filter__date"
+              InputProps={{
+                className: 'filter__date-input',
+              }} />
+            <TextField id="dateTo" variant="outlined" type="date" defaultValue="2018-12-20" className="filter__date" InputProps={{
+              className: 'filter__date-input',
+            }} />
+          </form>
           <h4 className="filter-title">Filtr wieku:</h4>
           <SliderWithTooltip className="filter-slider" allowCross={false} min={0} max={2018} defaultValue={[0, 2018]} onChange={(value) => this.filterByAge(value)} />
           <h4 className="filter-title">Filtr narodowosci:</h4>
@@ -143,23 +119,9 @@ class Ranking extends Component {
           <RankingTopPlayer player={top3[0]} color='#ffd700' />
           <RankingTopPlayer player={top3[1]} color='#c0c0c0' />
           <RankingTopPlayer player={top3[2]} color='#905923' />
-        </ul >
-        <table className="ranking__table">
-          <thead className="ranking__header">
-            <tr>
-              <th>Miejsce</th>
-              <th>Imię i nazwisko</th>
-              <th>Wiek</th>
-              <th>Narodowosc</th>
-              <th>Punkty</th>
-              <th>Trend</th>
-            </tr>
-          </thead>
-          <tbody className="ranking__body">
-            {players.map((player) => this.showPlayer(player))}
-          </tbody>
-        </table>
-      </section >
+        </ul>
+        <RankingTable players={players} />
+      </section>
 
     );
   }
