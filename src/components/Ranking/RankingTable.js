@@ -4,18 +4,12 @@ import { faArrowUp, faArrowDown, faBullseye } from '@fortawesome/free-solid-svg-
 import { Link } from 'react-router-dom';
 import './rankingtable.scss';
 
-let place = 4;
-
 class RankingTable extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
         };
-    }
-
-    componentDidUpdate() {
-        place = 4;
     }
 
     render() {
@@ -40,7 +34,7 @@ class RankingTable extends Component {
             }
             return (
                 <tr key={player.idPlayer} className="ranking__row">
-                    <td><Link to={'/player/' + player.idPlayer} className="ranking__link">{place++}.</Link></td>
+                    <td><Link to={'/player/' + player.idPlayer} className="ranking__link">{player.position}.</Link></td>
                     <td><Link to={'/player/' + player.idPlayer} className="ranking__link">{player.firstName + ' ' + player.lastName}</Link></td>
                     <td><Link to={'/player/' + player.idPlayer} className="ranking__link">{player.age}</Link></td>
                     <td><Link to={'/player/' + player.idPlayer} className="ranking__link"><img className="ranking__flag" src={'/img/flags/' + player.nationality + '.svg'} alt="Poland" /></Link></td>
