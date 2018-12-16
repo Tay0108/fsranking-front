@@ -6,11 +6,12 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faArrowUp, faArrowDown, faBullseye } from '@fortawesome/free-solid-svg-icons';
 import 'rc-slider/assets/index.css'
-import { Range } from 'rc-slider';
+import { Range, createSliderWithTooltip } from 'rc-slider';
 import ChipInput from 'material-ui-chip-input';
 import TextField from '@material-ui/core/TextField';
 
 let place = 4;
+const SliderWithTooltip = createSliderWithTooltip(Range);
 
 class Ranking extends Component {
 
@@ -18,6 +19,7 @@ class Ranking extends Component {
     super(props);
     this.state = {
       players: null,
+      playersOrigin: null,
       nationalityFilter: ['POL'],
       ageFilterLeft: 0,
       ageFilterRight: 40,
@@ -27,7 +29,10 @@ class Ranking extends Component {
   componentDidMount() {
     fetch('https://fsranking.herokuapp.com/rankings/battle')
       .then(response => response.json())
-      .then(json => this.setState({ players: json }));
+      .then(json => this.setState({ 
+        playersOrigin: json,
+        players: json,
+      }));
   }
 
   showFilters() {
@@ -39,9 +44,14 @@ class Ranking extends Component {
   }
 
   filterByAge(value) {
+
+    let min = value[0];
+    let max = value[1];
+
+    let players = this.state.playersOrigin.filter((player) => player.age >= min && player.age <= max);
+
     this.setState({
-       ageFilterLeft: value[0],
-       ageFilterRight: value[1],
+      players: players,
      });
   }
 
@@ -51,6 +61,7 @@ class Ranking extends Component {
   }
 
   showPlayer(player) {
+    
     let trend = faBullseye;
     let style = {
       color: 'grey',
@@ -83,13 +94,13 @@ class Ranking extends Component {
     let top3 = [];
     let players = [];
 
-    if (this.state.players != null) {
+    if (this.state.players != null && this.state.players != []) {
       this.state.players.sort((a, b) => (-1) * (a.points - b.points))
       top3 = this.state.players.slice(0, 3);
       players = this.state.players.slice(3, this.state.players.length);
     }
 
-    if (players.length === 0) {
+    if (this.state.playersOrigin === null) {
       return (
         <Loader color="#010021" height="200" width="200" />
       );
@@ -107,7 +118,7 @@ class Ranking extends Component {
        <TextField id="date" variant="outlined" type="date" defaultValue="2018-12-20" className="filter__date-input"/>
     </form>
           <h4 className="filter-title">Filtr wieku:</h4>
-          <Range className="filter-slider" allowCross={false} min={0} max={100} defaultValue={[0, 100]} onChange={(value) => this.filterByAge(value)} />
+          <SliderWithTooltip className="filter-slider" allowCross={false} min={0} max={2018} defaultValue={[0, 2018]} onChange={(value) => this.filterByAge(value)} />
           <h4 className="filter-title">Filtr narodowosci:</h4>
           <ChipInput className="filter__chip" variant="outlined"
             placeholder="Wpisz nazwę kraju" onAdd={(event) => this.filterByNationality(event)}
