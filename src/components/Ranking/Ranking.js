@@ -20,18 +20,43 @@ class Ranking extends Component {
       players: null,
       playersOrigin: null,
       nationalityFilter: ['POL'],
-      ageFilterLeft: 0,
-      ageFilterRight: 40,
+      ageFilterMin: 15,
+      ageFilterMax: 35,
     };
+    this.findAgeLimits = this.findAgeLimits.bind(this);
+    this.initState = this.initState.bind(this);
   }
 
   componentDidMount() {
     fetch('https://fsranking.herokuapp.com/rankings/battle')
       .then(response => response.json())
-      .then(json => this.setState({
-        playersOrigin: json,
-        players: json,
-      }));
+      .then(json => this.initState(json));
+  }
+
+  initState(json) {
+    let limits = this.findAgeLimits(json);
+
+    this.setState({
+      playersOrigin: json,
+      players: json,
+      ageFilterMin: limits[0],
+      ageFilterMax: limits[1],
+    });
+  }
+
+  findAgeLimits(playersOrigin) {
+    let minAge = Number.MAX_SAFE_INTEGER;
+    let maxAge = Number.MIN_SAFE_INTEGER;
+
+    for (let i = 0; i < playersOrigin.length; i++) {
+      if (playersOrigin[i].age < minAge) {
+        minAge = playersOrigin[i].age;
+      }
+      if (playersOrigin[i].age > maxAge) {
+        maxAge = playersOrigin[i].age;
+      }
+    }
+    return [minAge, maxAge];
   }
 
   showFilters() {
@@ -46,10 +71,10 @@ class Ranking extends Component {
 
   filterByAge(value) {
 
-    let min = value[0];
-    let max = value[1];
+    let minAge = value[0];
+    let maxAge = value[1];
 
-    let players = this.state.playersOrigin.filter((player) => player.age >= min && player.age <= max);
+    let players = this.state.playersOrigin.filter((player) => player.age >= minAge && player.age <= maxAge);
 
     this.setState({
       players: players,
@@ -62,6 +87,7 @@ class Ranking extends Component {
   }
 
   render() {
+
     let top3 = [];
     let players = [];
 
@@ -94,7 +120,7 @@ class Ranking extends Component {
             }} />
           </form>
           <h4 className="filter-title">Filtr wieku:</h4>
-          <SliderWithTooltip className="filter-slider" allowCross={false} min={0} max={2018} defaultValue={[0, 2018]} onChange={(value) => this.filterByAge(value)} />
+          <SliderWithTooltip className="filter-slider" allowCross={false} min={this.state.ageFilterMin} max={this.state.ageFilterMax} defaultValue={[this.state.ageFilterMin, this.state.ageFilterMax]} onChange={(value) => this.filterByAge(value)} />
           <h4 className="filter-title">Filtr narodowosci:</h4>
           <ChipInput className="filter__chip" variant="outlined"
             placeholder="Wpisz nazwę kraju" onAdd={(event) => this.filterByNationality(event)}
