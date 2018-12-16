@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import './rankingtable.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes, faArrowUp, faArrowDown, faBullseye } from '@fortawesome/free-solid-svg-icons';
+import { faArrowUp, faArrowDown, faBullseye } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-import Ranking from './Ranking';
+import './rankingtable.scss';
 
 let place = 4;
 
