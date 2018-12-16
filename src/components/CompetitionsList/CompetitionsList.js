@@ -145,7 +145,7 @@ class CompetitionsList extends Component {
                     <tr key={competition.id} className="competitions-list__row">
                       <td><Link to={'/competition/' + competition.id} className="competitions-list__link">{competition.name}</Link></td>
                       <td><Link to={'/competition/' + competition.id} className="competitions-list__link">{competition.location}</Link></td>
-                      <td><Link to={'/competition/' + competition.id} className="competitions-list__link">{competition.year}</Link></td>
+                      <td><Link to={'/competition/' + competition.id} className="competitions-list__link">{competition.date}</Link></td>
                       <td><Link to={'/competition/' + competition.id} className="competitions-list__link">{competition.importance}</Link></td>
                     </tr>
                   )
