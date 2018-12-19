@@ -19,12 +19,14 @@ class Ranking extends Component {
     this.state = {
       players: null,
       playersOrigin: null,
-      nationalityFilter: ['POL'],
+      allNationalities: [],
+      nationalityFilter: [],
       ageFilterMin: 15,
       ageFilterMax: 35,
     };
     this.findAgeLimits = this.findAgeLimits.bind(this);
     this.initState = this.initState.bind(this);
+    this.findNationalities = this.findNationalities.bind(this);
   }
 
   componentDidMount() {
@@ -35,13 +37,26 @@ class Ranking extends Component {
 
   initState(json) {
     let limits = this.findAgeLimits(json);
+    let nationalities = this.findNationalities(json);
 
     this.setState({
       playersOrigin: json,
       players: json,
+      allNationalities: nationalities,
+      nationalityFilter: nationalities,
       ageFilterMin: limits[0],
       ageFilterMax: limits[1],
     });
+  }
+
+  findNationalities(playersOrigin) {
+    let nationalities = [];
+    for (let i = 0; i < playersOrigin.length; i++) {
+      if (!nationalities.includes(playersOrigin[i].nationality)) {
+        nationalities.push(playersOrigin[i].nationality);
+      }
+    }
+    return nationalities;
   }
 
   findAgeLimits(playersOrigin) {
@@ -81,9 +96,13 @@ class Ranking extends Component {
     });
   }
 
-  filterByNationality(event) {
+  filterByNationality(chips) {
     console.log('filter by nationality');
-    this.setState({ nationalityFilter: event.target.value });
+    let players = this.state.playersOrigin.filter((player) => chips.includes(player.nationality));
+
+    this.setState({
+      players: players,
+    });
   }
 
   render() {
@@ -122,7 +141,7 @@ class Ranking extends Component {
           <h4 className="filter-title">Filtr wieku:</h4>
           <SliderWithTooltip className="filter-slider" allowCross={false} min={this.state.ageFilterMin} max={this.state.ageFilterMax} defaultValue={[this.state.ageFilterMin, this.state.ageFilterMax]} onChange={(value) => this.filterByAge(value)} />
           <h4 className="filter-title">Filtr narodowosci:</h4>
-          <ChipInput className="filter__chip" variant="outlined"
+          <ChipInput className="filter__chip" variant="outlined" defaultValue={this.state.nationalityFilter} onChange={(chips) => this.filterByNationality(chips)}
             placeholder="Wpisz nazwę kraju" onAdd={(event) => this.filterByNationality(event)}
             InputProps={{
               className: 'chip__input',

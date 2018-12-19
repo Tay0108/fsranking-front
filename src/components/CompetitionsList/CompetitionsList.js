@@ -51,9 +51,9 @@ class CompetitionsList extends Component {
     console.log('sorting by date ' + direction);
 
     const asc = function (a, b) {
-      if (new Date(a.year).getTime() > new Date(b.year).getTime()) {
+      if (new Date(a.date).getTime() > new Date(b.date).getTime()) {
         return 1;
-      } else if (new Date(a.year).getTime() < new Date(b.year).getTime()) {
+      } else if (new Date(a.date).getTime() < new Date(b.date).getTime()) {
         return -1;
       }
       else {
@@ -61,9 +61,9 @@ class CompetitionsList extends Component {
       }
     }
     const desc = function (a, b) {
-      if (new Date(a.year).getTime() > new Date(b.year).getTime()) {
+      if (new Date(a.date).getTime() > new Date(b.date).getTime()) {
         return -1;
-      } else if (new Date(a.year).getTime() < new Date(b.year).getTime()) {
+      } else if (new Date(a.date).getTime() < new Date(b.date).getTime()) {
         return 1;
       }
       else {

@@ -15,4 +15,49 @@
         font-size: 1.5em;
         line-height: 2em;
     }
+
+    .top-players__table {
+        width: 100%;
+        text-align: center;
+    }
+    .top-players__header {
+        background-color: rgba(80, 111, 148, 0.7);
+        box-sizing: border-box;
+    }
+    .top-players__header th {
+        height: 50px;
+        vertical-align: middle;
+        font-weight: bold;
+    }
+    .top-players__row {
+        box-sizing: border-box;
+        height: 30px;
+    }
+    .top-players__row td {
+        vertical-align: middle;
+    }
+    .top-players__row:nth-child(2n-1) {
+        background-color: rgba(199, 199, 200, 0.7);
+    }
+    .top-players__row:nth-child(2n) {
+        background-color: rgba(168, 168, 169, 0.7);
+    }
+    .top-players__link {
+        display: block;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+        color: #000000;
+    }
 }
+
+// TABLET
+@media only screen and (min-width: 768px) {
+    .competition {
+        width: 700px;
+        margin: 50px auto;
+    }
+}
+
+// DESKTOP
+@media only screen and (min-width: 1200px) {}
