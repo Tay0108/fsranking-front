@@ -65,12 +65,31 @@
     height: auto;
 }
 
+.players-list__filter {
+    background-color: #000000;
+    margin-bottom: 20px;
+    padding: 20px;
+    .filter-title {
+        text-align: center;
+        font-size: 1.7em;
+        margin: 20px 0 20px 0;
+        color: #ffffff;
+    }
+    .filter__player {
+        border: 1px solid #ffffff;
+        border-radius: 5px;
+        width: 100%;
+    }
+    .filter__player-input {
+        color: #ffffff;
+    }
+}
+
 // TABLET
 @media only screen and (min-width: 768px) {
     .players-list {
         width: 700px;
         margin: 50px auto;
-
     }
 }
 

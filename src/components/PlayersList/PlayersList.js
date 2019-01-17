@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import stable from 'stable';
 import { faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import TextField from '@material-ui/core/TextField';
 
 class PlayersList extends Component {
 
@@ -22,7 +23,7 @@ class PlayersList extends Component {
         }
         return player;
       }))
-      .then(json => this.setState({ players: json }))
+      .then(json => this.setState({ players: json, playersOrigin: json }))
   }
 
   sortPlayersByName(direction) {
@@ -81,14 +82,42 @@ class PlayersList extends Component {
     this.setState({ players: playersCopy });
   }
 
+  filterPlayers(event) {
+    let playersCopy = this.state.playersOrigin;
+
+    function check(player, word) {
+
+      if ((player.firstName + ' ' + player.nick + ' ' + player.lastName).toLowerCase().includes(word) || (player.firstName + ' ' + player.lastName).toLowerCase().includes(word)) {
+        return true;
+      }
+      return false;
+    }
+
+    playersCopy = playersCopy.filter((player) => check(player, event.target.value));
+
+    this.setState({ players: playersCopy });
+  }
+
   render() {
 
     if (this.state.players === undefined) {
-      return (<Loader color="#010021" height="200" width="200"/>);
+      return (<Loader
+        color="#010021"
+        height="200"
+        width="200"
+      />);
     }
 
     return (
       <section className="players-list">
+
+        <form className="players-list__filter">
+        <h4 className="filter-title">Wyszukaj zawodnika:</h4>
+          <TextField id="dateFrom" placeholder="Imię, nazwisko lub nick" variant="outlined" type="text" defaultValue="" className="filter__player" onChange={(event) => this.filterPlayers(event)}
+            InputProps={{
+              className: 'filter__player-input',
+            }} />
+        </form>
         <table className="players-list__table">
           <thead className="players-list__header">
             <tr>

@@ -97,7 +97,6 @@ class Ranking extends Component {
   }
 
   filterByNationality(chips) {
-    console.log('filter by nationality');
     let players = this.state.playersOrigin.filter((player) => chips.includes(player.nationality));
 
     this.setState({
@@ -117,9 +116,11 @@ class Ranking extends Component {
     }
 
     if (this.state.playersOrigin === null) {
-      return (
-        <Loader color="#010021" height="200" width="200" />
-      );
+      return (<Loader
+        color="#010021"
+        height="200"
+        width="200"
+      />);
     }
 
     return (
