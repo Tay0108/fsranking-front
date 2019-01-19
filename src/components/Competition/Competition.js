@@ -14,22 +14,38 @@ class Competition extends Component {
         fetch('https://fsranking.herokuapp.com/competitions/' + this.props.match.params.id)
             .then(response => response.json())
             .then(json => this.setState(json));
+
+        fetch('https://fsranking.herokuapp.com/players/')
+            .then(response => response.json())
+            .then(json => this.setState({players: json}));
     }
 
     render() {
 
+        if (this.state.name === undefined || this.state.players === undefined) {
+            return (<Loader color="#010021" height="200" width="200" />);
+        }
+
+        let players = this.state.players;
+
         function showPlayer(player) {
+        let playerName;
+        
+        for(let i=0; i < players.length;i++) {
+            if(players[i].id === player.player) {
+                playerName = players[i].firstName + ' ' +  players[i].lastName;
+            }
+        }
+
             return (
                 <tr key={player.player} className="top-players__row">
-                    <td><Link to={'/player/' + player.player} className="top-players__link">{player.place}</Link></td>
-                    <td><Link to={'/player/' + player.player} className="top-players__link">{player.player}</Link></td>
+                    <td><Link to={'/player/' + player.player} className="top-players__link">{player.place}.</Link></td>
+                    <td><Link to={'/player/' + player.player} className="top-players__link">{playerName}</Link></td>
                     <td><Link to={'/player/' + player.player} className="top-players__link">{player.score}</Link></td>
                 </tr>);
         }
 
-        if (this.state.name === undefined) {
-            return (<Loader color="#010021" height="200" width="200"/>);
-        }
+        
 
         return (
             <div className="competition">
@@ -38,17 +54,17 @@ class Competition extends Component {
                 <h3 className="competition__title">Waga: {this.state.importance}</h3>
                 <h3 className="competition__title">Top16:</h3>
                 <table className="top-players__table">
-                <thead className="top-players__header">
-                    <tr>
-                        <th>Miejsce</th>
-                        <th>Id zawodnika</th>
-                        <th>Punkty zdobyte</th>
-                    </tr>
-                </thead>
-                <tbody className="top-players__body">
-                    {this.state.battle.map((player) => showPlayer(player))}
-                </tbody>
-            </table></div>
+                    <thead className="top-players__header">
+                        <tr>
+                            <th>Miejsce</th>
+                            <th>Zawodnik</th>
+                            <th>Punkty zdobyte</th>
+                        </tr>
+                    </thead>
+                    <tbody className="top-players__body">
+                        {this.state.battle.map((player) => showPlayer(player))}
+                    </tbody>
+                </table></div>
         );
     }
 
