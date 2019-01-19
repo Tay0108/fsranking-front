@@ -12,6 +12,7 @@ class Player extends Component {
     constructor(props) {
         super(props);
         this.state = {};
+        this.showPredictions = this.showPredictions.bind(this);
     }
 
     componentDidMount() {
@@ -22,6 +23,10 @@ class Player extends Component {
         fetch('https://fsranking.herokuapp.com/players/' + this.props.match.params.id + '/statistics')
             .then(response => response.json())
             .then(json => this.setState(json));
+
+            fetch('https://fsranking.herokuapp.com/players/' + this.props.match.params.id + '/predictions')
+            .then(response => response.json())
+            .then(json => this.setState({prediction: json}));
     }
 
     sortHistoryByPlace(direction) {
@@ -100,7 +105,22 @@ class Player extends Component {
     }
 
     validateData() {
-        return this.state.firstName !== undefined && this.state.scoreHistory !== undefined;
+        return this.state.firstName !== undefined && this.state.scoreHistory !== undefined && this.state.prediction !== undefined;
+    }
+
+    showPredictions() {
+
+        let predictions = [];
+
+        for(let index in this.state.prediction.groupNamesAndPredictions) {
+            predictions.push(<li key={index}>{`W zawodach z serii ${index} ${this.state.firstName} ma szanse zająć ${this.state.prediction.groupNamesAndPredictions[index]}. miejsce.`}</li>);
+        }
+
+        return(
+            <ul className="player__prediction">
+                    {predictions}
+            </ul>
+        );
     }
 
     render() {
@@ -194,6 +214,10 @@ class Player extends Component {
                 <ul className="player__social-media">
 
                 </ul>
+
+                <h3 className="player__title">Predykcja lokat</h3>
+               {this.showPredictions()}
+
                 <div className="player__charts">
                     <h3 className="player__title">Statystyki:</h3>
                     <select className="charts__select">
