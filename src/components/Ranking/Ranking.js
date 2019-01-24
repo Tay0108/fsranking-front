@@ -30,7 +30,7 @@ class Ranking extends Component {
   }
 
   componentDidMount() {
-    fetch('https://fsranking.herokuapp.com/rankings/battle')
+    fetch('https://localhost:8080/rankings/battle')
       .then(response => response.json())
       .then(json => this.initState(json));
   }
