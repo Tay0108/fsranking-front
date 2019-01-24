@@ -16,15 +16,15 @@ class Player extends Component {
     }
 
     componentDidMount() {
-        fetch('https://localhost:8080/players/' + this.props.match.params.id)
+        fetch('https://fsranking.herokuapp.com/players/' + this.props.match.params.id)
             .then(response => response.json())
             .then(json => this.setState(json));
 
-        fetch('https://localhost:8080/players/' + this.props.match.params.id + '/statistics')
+        fetch('https://fsranking.herokuapp.com/players/' + this.props.match.params.id + '/statistics')
             .then(response => response.json())
             .then(json => this.setState(json));
 
-            fetch('https://localhost:8080/players/' + this.props.match.params.id + '/predictions')
+            fetch('https://fsranking.herokuapp.com/players/' + this.props.match.params.id + '/predictions')
             .then(response => response.json())
             .then(json => this.setState({prediction: json}));
     }

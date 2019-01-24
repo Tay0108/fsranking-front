@@ -15,7 +15,7 @@ class PlayersList extends Component {
   }
 
   componentDidMount() {
-    fetch('https://localhost:8080/players')
+    fetch('https://fsranking.herokuapp.com/players')
       .then(response => response.json())
       .then(players => players.map(function (player) {
         if (player.nick === null) {

@@ -14,7 +14,7 @@ class CompetitionsList extends Component {
   }
 
   componentDidMount() {
-    fetch('https://localhost:8080/competitions')
+    fetch('https://fsranking.herokuapp.com/competitions')
       .then(response => response.json())
       .then(json => this.setState({ competitions: json }));
   }

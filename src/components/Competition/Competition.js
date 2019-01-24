@@ -11,11 +11,11 @@ class Competition extends Component {
     }
 
     componentDidMount() {
-        fetch('https://localhost:8080/competitions/' + this.props.match.params.id)
+        fetch('https://fsranking.herokuapp.com/competitions/' + this.props.match.params.id)
             .then(response => response.json())
             .then(json => this.setState(json));
 
-        fetch('https://localhost:8080/players/')
+        fetch('https://fsranking.herokuapp.com/players/')
             .then(response => response.json())
             .then(json => this.setState({players: json}));
     }
