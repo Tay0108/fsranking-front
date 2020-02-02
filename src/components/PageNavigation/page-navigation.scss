@@ -2,16 +2,70 @@
   display: flex;
   align-items: center;
   .current-view-name {
-    font-family: 'Gilroy-Regular', 'sans-serif';
+    font-family: "Gilroy-Regular", "sans-serif";
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 500;
     color: #ff6565;
     text-transform: uppercase;
-    margin-right: 21px;
+    position: relative;
+    span {
+      margin: 0 21px 0 0;
+      display: block;
+    }
+  }
+
+  .page-navigation__inner-nav {
+    position: relative;
+    margin-top: 21px;
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      li {
+        margin-bottom: 3px;
+        .page-navigation__link {
+          font-size: 1rem;
+          font-weight: 500;
+          text-transform: uppercase;
+          font-family: "Gilroy-Regular", "sans-serif";
+          color: #ffffff;
+          text-decoration: none;
+        }
+        .page-navigation__link--active {
+          color: #ff6565;
+          margin-right: 21px;
+        }
+      }
+      li:first-child {
+        text-align: right;
+      }
+      li:last-child {
+        margin-left: 20px;
+      }
+    }
+
+    .page-navigation__hamburger--open {
+      color: #ff6565;
+      cursor: pointer;
+      background: none;
+      border: none;
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
   }
 
   .page-navigation__hamburger--closed {
     color: #ff6565;
+    cursor: pointer;
+    background: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
   }
 }
-
