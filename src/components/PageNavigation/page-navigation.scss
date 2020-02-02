@@ -1,0 +1,17 @@
+.page-navigation {
+  display: flex;
+  align-items: center;
+  .current-view-name {
+    font-family: 'Gilroy-Regular', 'sans-serif';
+    font-size: 1rem;
+    font-weight: normal;
+    color: #ff6565;
+    text-transform: uppercase;
+    margin-right: 21px;
+  }
+
+  .page-navigation__hamburger--closed {
+    color: #ff6565;
+  }
+}
+
