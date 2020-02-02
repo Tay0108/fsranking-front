@@ -1,0 +1,18 @@
+.sorting-button {
+  background-color: #ff6565;
+  border-radius: 8px;
+  border: none;
+  color: #ffffff;
+  font-size: 0.7rem;
+  padding: 7px;
+  font-family: 'Gilroy-Regular', sans-serif;
+  font-weight: 500;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  .sorting-button__arrow {
+    margin-left: 10px;
+  }
+}
