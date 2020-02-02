@@ -2,5 +2,9 @@ import React from "react";
 import "./page-logo.scss";
 
 export function PageLogo() {
-    return null;
+    return(
+        <div className="page-logo">
+            <img src="/img/page-logo.svg" alt="page logo"/>
+        </div>
+    );
 }
