@@ -1,0 +1,60 @@
+.top-player {
+  border-top: 4px solid #ff6565;
+  position: relative;
+  .top-player__image {
+    display: block;
+    width: 100%;
+  }
+
+  .top-player__description {
+    z-index: 1;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 0 0 10px 5px;
+    box-sizing: border-box;
+    width: 100%;
+    .top-player__name {
+      font-family: "Gilroy-Regular", sans-serif;
+      font-weight: normal;
+      font-size: 2rem;
+      color: #ffffff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .top-player__points {
+      font-family: "Gilroy-Regular", sans-serif;
+      font-weight: normal;
+      font-size: 1.5rem;
+      margin: 0;
+      padding: 0;
+    }
+    .top-player__ball {
+      position: absolute;
+      right: 5px;
+      bottom: 5px;
+      width: 33px;
+      height: 33px;
+    }
+
+    .top-player__points--gold {
+      color: #ffbf00;
+    }
+    .top-player__ball--gold {
+      color: #ffbf00;
+    }
+    .top-player__points--silver {
+      color: #b9b9b9;
+    }
+    .top-player__ball--silver {
+      color: #b9b9b9;
+    }
+    .top-player__points--bronze {
+      color: #a45321;
+    }
+    .top-player__ball--bronze {
+      color: #a45321;
+    }
+  }
+}
