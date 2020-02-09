@@ -4,3 +4,11 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.page-header--open {
+  background-image: url("/img/ball-cut.png");
+  background-size: contain;
+  background-position: right;
+  background-repeat: no-repeat;
+  align-items: normal;
+}
