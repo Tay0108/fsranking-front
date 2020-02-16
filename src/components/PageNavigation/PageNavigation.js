@@ -15,22 +15,18 @@ export function PageNavigation() {
   return (
     <nav className="page-navigation">
       {isOpen ? (
+          <>
+          <h1 className="current-view-name">
+            <span>Ranking</span>
+            <button
+                className="page-navigation__hamburger--closed"
+                onClick={toggleNavigation}
+            >
+              <FontAwesomeIcon icon={faTimes} />
+            </button>
+          </h1>
         <div className="page-navigation__inner-nav">
-          <button
-            className="page-navigation__hamburger--open"
-            onClick={toggleNavigation}
-          >
-            <FontAwesomeIcon icon={faTimes} />
-          </button>
           <ul>
-            <li>
-              <a
-                href="#"
-                className="page-navigation__link page-navigation__link--active"
-              >
-                Ranking
-              </a>
-            </li>
             <li>
               <a href="#" className="page-navigation__link">
                 Zawodnicy
@@ -43,6 +39,7 @@ export function PageNavigation() {
             </li>
           </ul>
         </div>
+          </>
       ) : (
         <>
           <h1 className="current-view-name">
