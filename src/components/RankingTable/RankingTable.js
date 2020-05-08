@@ -17,7 +17,7 @@ export function RankingTable() {
         </tr>
       </thead>
       <tbody>
-        {players.map(player => {
+        {players.map((player) => {
           if (player.place < 4) {
             return null;
           }

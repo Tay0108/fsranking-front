@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./page-navigation.scss";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 
@@ -22,18 +23,18 @@ export function PageNavigation() {
           >
             <FontAwesomeIcon icon={faTimes} />
           </button>
-              <a
-                href="#"
-                className="page-navigation__link page-navigation__link--active"
-              >
-                Ranking
-              </a>
-              <a href="#" className="page-navigation__link">
-                Zawodnicy
-              </a>
-              <a href="#" className="page-navigation__link">
-                Turnieje
-              </a>
+          <Link
+            to="/"
+            className="page-navigation__link page-navigation__link--active"
+          >
+            Ranking
+          </Link>
+          <Link to="/players" className="page-navigation__link">
+            Zawodnicy
+          </Link>
+          <Link to="#" className="page-navigation__link">
+            Turnieje
+          </Link>
         </div>
       ) : (
         <>

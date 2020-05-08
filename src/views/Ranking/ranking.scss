@@ -1,14 +1,14 @@
 .main-content {
-.top-players-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  .top-players-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 
-  li {
-    border-bottom: 4px solid #ff6565;
+    li {
+      border-bottom: 4px solid #ff6565;
+    }
+    li:first-of-type {
+      border-top: 4px solid #ff6565;
+    }
   }
-  li:first-of-type {
-    border-top: 4px solid #ff6565;
-  }
-}
 }
