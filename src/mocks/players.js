@@ -5,7 +5,7 @@ export const players = [
     age: 27,
     points: "10200",
     nationality: "pl",
-    trend: 0
+    trend: 0,
   },
   {
     place: 2,
@@ -13,7 +13,7 @@ export const players = [
     age: 29,
     points: "8690",
     nationality: "pl",
-    trend: 0
+    trend: 0,
   },
   {
     place: 3,
@@ -21,7 +21,7 @@ export const players = [
     age: 29,
     points: "7965",
     nationality: "pl",
-    trend: 0
+    trend: 0,
   },
   {
     place: 4,
@@ -29,7 +29,7 @@ export const players = [
     age: 29,
     points: "6605",
     nationality: "pl",
-    trend: -1
+    trend: -1,
   },
   {
     place: 5,
@@ -37,7 +37,7 @@ export const players = [
     age: 26,
     points: "5020",
     nationality: "pl",
-    trend: 0
+    trend: 0,
   },
   {
     place: 6,
@@ -45,6 +45,6 @@ export const players = [
     age: 28,
     points: "4945",
     nationality: "pl",
-    trend: 1
-  }
+    trend: 1,
+  },
 ];

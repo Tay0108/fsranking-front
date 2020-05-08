@@ -23,18 +23,18 @@ export function PageNavigation() {
           >
             <FontAwesomeIcon icon={faTimes} />
           </button>
-              <Link
-                to="/"
-                className="page-navigation__link page-navigation__link--active"
-              >
-                Ranking
-              </Link>
-              <Link to="/players" className="page-navigation__link">
-                Zawodnicy
-              </Link>
-              <Link to="#" className="page-navigation__link">
-                Turnieje
-              </Link>
+          <Link
+            to="/"
+            className="page-navigation__link page-navigation__link--active"
+          >
+            Ranking
+          </Link>
+          <Link to="/players" className="page-navigation__link">
+            Zawodnicy
+          </Link>
+          <Link to="#" className="page-navigation__link">
+            Turnieje
+          </Link>
         </div>
       ) : (
         <>

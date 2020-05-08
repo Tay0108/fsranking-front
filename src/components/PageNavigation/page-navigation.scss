@@ -22,31 +22,31 @@
     position: relative;
     margin-top: 0;
     width: 100%;
-        .page-navigation__link {
-          font-size: 1rem;
-          font-weight: 500;
-          text-transform: uppercase;
-          font-family: "Gilroy-Regular", "sans-serif";
-          color: #ffffff;
-          text-decoration: none;
-          display: block;
-          margin-bottom: 5px;
-        }
-        .page-navigation__link--active {
-          color: #ff6565;
-          margin-right: 21px;
-        }
-
-  }
-    .page-navigation__hamburger--open, .page-navigation__hamburger--closed {
-      color: #ff6565;
-      cursor: pointer;
-      background: none;
-      border: none;
-      margin: 0;
-      padding: 0;
-      position: absolute;
-      top: 0;
-      right: 0;
+    .page-navigation__link {
+      font-size: 1rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      font-family: "Gilroy-Regular", "sans-serif";
+      color: #ffffff;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 5px;
     }
+    .page-navigation__link--active {
+      color: #ff6565;
+      margin-right: 21px;
+    }
+  }
+  .page-navigation__hamburger--open,
+  .page-navigation__hamburger--closed {
+    color: #ff6565;
+    cursor: pointer;
+    background: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
 }
