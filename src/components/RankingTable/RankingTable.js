@@ -1,7 +1,7 @@
 import React from "react";
 import "./ranking-table.scss";
 import { RankingTableEntry } from "../RankingTableEntry/RankingTableEntry";
-import { players } from "../../mocks/players";
+import { ranking } from "../../mocks/ranking";
 
 export function RankingTable() {
   return (
@@ -17,7 +17,7 @@ export function RankingTable() {
         </tr>
       </thead>
       <tbody>
-        {players.map((player) => {
+        {ranking.map((player) => {
           if (player.place < 4) {
             return null;
           }

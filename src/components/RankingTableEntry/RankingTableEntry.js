@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronDown,
   faChevronUp,
-  faGripLines,
+  faGripLines
 } from "@fortawesome/free-solid-svg-icons";
 
 export function RankingTableEntry({
@@ -13,7 +13,7 @@ export function RankingTableEntry({
   age,
   nationality,
   points,
-  trend,
+  trend
 }) {
   return (
     <tr>
