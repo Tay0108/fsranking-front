@@ -4,6 +4,7 @@ import "normalize.css";
 import { Ranking } from "./views/Ranking/Ranking";
 import { Players } from "./views/Players/Players";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Tournaments } from "./views/Tournaments/Tournaments";
 
 function App() {
   return (
@@ -12,6 +13,9 @@ function App() {
         <Switch>
           <Route path="/players">
             <Players />
+          </Route>
+          <Route path="/tournaments">
+            <Tournaments />
           </Route>
           <Route path="/">
             <Ranking />

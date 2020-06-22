@@ -32,7 +32,7 @@ export function PageNavigation() {
           <Link to="/players" className="page-navigation__link">
             Zawodnicy
           </Link>
-          <Link to="#" className="page-navigation__link">
+          <Link to="/tournaments" className="page-navigation__link">
             Turnieje
           </Link>
         </div>
