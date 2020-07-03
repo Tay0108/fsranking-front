@@ -1,0 +1,60 @@
+.player {
+  color: #ffffff;
+  position: relative;
+  min-height: 100vh;
+
+  .player__image-wrapper {
+    .player__image {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  .player__header {
+    .player__back-arrow {
+    }
+    .player__flag {
+    }
+  }
+
+  .player__info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    .player__place {
+      color: #ff6565;
+    }
+    .player__name {
+      font-family: Gilroy-Regular, "sans-serif";
+      font-weight: 600;
+      font-size: 2rem;
+    }
+
+    .player__nickname {
+      font-family: Gilroy-Regular, "sans-serif";
+      font-weight: 600;
+      font-size: 1.3rem;
+    }
+    .player__social-media {
+      margin: 0 auto;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      width: 100px;
+    }
+  }
+
+  .player__statistics {
+    margin: 0;
+    background-color: #000000;
+    .statistics__title {
+      margin: 0;
+    }
+    .statistics__list {
+      list-style: none;
+    }
+  }
+}
