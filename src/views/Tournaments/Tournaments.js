@@ -10,7 +10,7 @@ export function Tournaments() {
   useEffect(() => {
     (async function fetchTournaments() {
       const request = await fetch(
-        `${process.env.REACT_APP_API_URL}/competition`
+        `${process.env.REACT_APP_API_URL}/tournament`
       );
       const fetchedTournaments = await request.json();
       setTournaments(fetchedTournaments);
