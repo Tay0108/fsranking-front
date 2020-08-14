@@ -25,7 +25,7 @@ export function RankingTable({ entries }) {
               key={player.place}
               place={player.place}
               name={`${player.firstName} ${player.lastName}`}
-              age={player.age}
+              age={new Date().getFullYear() - player.birthYear}
               nationality={player.nationality.abbreviation}
               points={player.points}
               trend={player.trend}
