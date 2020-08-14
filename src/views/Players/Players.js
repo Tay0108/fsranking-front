@@ -27,7 +27,7 @@ export function Players() {
             <PlayerCard
               name={`${player.firstName} ${player.lastName}`}
               nickname={player.nickname}
-              age={player.age}
+              age={new Date().getFullYear() - player.birthYear}
               image={`img/players/ranking-player-${0}.jpg`}
             />
           ))}
