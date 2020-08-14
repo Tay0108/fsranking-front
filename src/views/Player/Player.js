@@ -40,7 +40,7 @@ export function Player(props) {
           <header className="player__header">
             <FontAwesomeIcon icon={faArrowLeft} className="player__back-arrow" />
             <img
-              src={`/img/flag/${player.nationality}.svg`}
+              src={`/img/flag/${player.nationality.abbreviation}.svg`}
               alt="Poland"
               className="player__flag"
             />

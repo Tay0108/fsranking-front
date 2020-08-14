@@ -1,24 +1,23 @@
 import React from "react";
 import "./top-player.scss";
-import { ranking } from "../../mocks/ranking";
 
-export function TopPlayer({ award, playerId }) {
+export function TopPlayer({ award, player }) {
   return (
     <div className="top-player">
       <img
         className="top-player__image"
-        src={`/img/players/ranking-player-${playerId}.jpg`}
-        alt={`player ${playerId}`}
+        src={`/img/players/ranking-player-${player.id}.jpg`}
+        alt={`player ${player.id}`}
       />
       <div className="top-player__description">
         <img
           className="top-player__flag"
-          src={`/img/flag/${ranking[playerId].nationality}.svg`}
+          src={`/img/flag/${player.nationality.abbreviation}.svg`}
           alt="nationality"
         />
-        <h3 className="top-player__name">{ranking[playerId].name}</h3>
+        <h3 className="top-player__name">{`${player.firstName} ${player.lastName}`}</h3>
         <h4 className={`top-player__points top-player__points--${award}`}>
-          {ranking[playerId].points} punktów
+          {player.points} punktów
         </h4>
         <img
           className={`top-player__ball top-player__ball--${award}`}
