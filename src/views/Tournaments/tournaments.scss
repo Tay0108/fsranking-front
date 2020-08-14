@@ -1,0 +1,36 @@
+.tournaments-header {
+  background-image: url('/img/tournaments-header.png');
+  background-position: center center;
+  background-size: cover;
+  color: #ffffff;
+  padding: 24px 12px;
+
+  .tournaments-nav {
+    .tournaments-nav__link {
+      color: #ffffff;
+      text-decoration: none;
+      font-family: Gilroy-Regular, "sans-serif";
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin-right: 10px;
+    }
+    .tournaments-nav__link--active {
+      color: #ff6565;
+      border-bottom: 2px solid #ff6565;
+    }
+  }
+
+  .tournaments-header__info {
+    font-family: Gilroy-Regular, "sans-serif";
+    font-weight: 600;
+    font-size: 1rem;
+
+    .tournaments-count {
+      color: #ff6565;
+    }
+
+    .locations-count {
+      color: #ff6565;
+    }
+  }
+}
