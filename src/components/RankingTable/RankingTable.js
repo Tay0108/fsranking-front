@@ -1,9 +1,8 @@
 import React from "react";
 import "./ranking-table.scss";
 import { RankingTableEntry } from "../RankingTableEntry/RankingTableEntry";
-import { ranking } from "../../mocks/ranking";
 
-export function RankingTable() {
+export function RankingTable({ entries }) {
   return (
     <table className="ranking-table">
       <thead>
@@ -17,7 +16,7 @@ export function RankingTable() {
         </tr>
       </thead>
       <tbody>
-        {ranking.map((player) => {
+        {entries.map((player) => {
           if (player.place < 4) {
             return null;
           }
@@ -25,9 +24,9 @@ export function RankingTable() {
             <RankingTableEntry
               key={player.place}
               place={player.place}
-              name={player.name}
+              name={`${player.firstName} ${player.lastName}`}
               age={player.age}
-              nationality={player.nationality}
+              nationality={player.nationality.abbreviation}
               points={player.points}
               trend={player.trend}
             />
