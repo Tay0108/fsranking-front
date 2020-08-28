@@ -1,0 +1,12 @@
+.ranking-table__link {
+  display: block;
+  text-decoration: none;
+}
+
+tr:nth-of-type(2n+1) .ranking-table__link {
+  color: #000000;
+}
+
+tr:nth-of-type(2n) .ranking-table__link {
+  color: #ffffff;
+}
