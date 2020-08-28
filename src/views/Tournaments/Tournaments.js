@@ -3,7 +3,7 @@ import "./tournaments.scss";
 import { PageHeader } from "../../components/PageHeader/PageHeader";
 import { SortingButton } from "../../components/SortingButton/SortingButton";
 import { TournamentTable } from "../../components/TournamentTable/TournamentTable";
-import { Link, NavLink, Route, Switch } from "react-router-dom";
+import { NavLink, Route, Switch } from "react-router-dom";
 
 export function Tournaments() {
   const [pastTournaments, setPastTournaments] = useState([]);

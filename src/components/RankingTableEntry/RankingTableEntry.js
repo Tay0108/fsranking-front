@@ -6,8 +6,10 @@ import {
   faChevronUp,
   faGripLines
 } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 export function RankingTableEntry({
+  id,
   place,
   name,
   age,
@@ -17,39 +19,63 @@ export function RankingTableEntry({
 }) {
   return (
     <tr>
-      <td>{place}.</td>
-      <td>{name}</td>
-      <td>{age}</td>
       <td>
-        <img
-          className="ranking-table__nationality"
-          alt={nationality}
-          src={`/img/flag/${nationality}.svg`}
-        />
+        <Link className="ranking-table__link" to={`/player/${id}`}>
+          {place}.
+        </Link>
       </td>
-      <td>{points}</td>
+      <td>
+        <Link className="ranking-table__link" to={`/player/${id}`}>
+          {name}
+        </Link>
+      </td>
+      <td>
+        <Link className="ranking-table__link" to={`/player/${id}`}>
+          {age}
+        </Link>
+      </td>
+      <td>
+        <Link className="ranking-table__link" to={`/player/${id}`}>
+          <img
+            className="ranking-table__nationality"
+            alt={nationality}
+            src={`/img/flag/${nationality}.svg`}
+          />
+        </Link>
+      </td>
+      <td>
+        <Link className="ranking-table__link" to={`/player/${id}`}>
+          {points}
+        </Link>
+      </td>
       {trend === -1 && (
         <td>
-          <FontAwesomeIcon
-            className="ranking-table__trend--down"
-            icon={faChevronDown}
-          />
+          <Link className="ranking-table__link" to={`/player/${id}`}>
+            <FontAwesomeIcon
+              className="ranking-table__trend--down"
+              icon={faChevronDown}
+            />
+          </Link>
         </td>
       )}
       {trend === 0 && (
         <td>
-          <FontAwesomeIcon
-            className="ranking-table__trend--stale"
-            icon={faGripLines}
-          />
+          <Link className="ranking-table__link" to={`/player/${id}`}>
+            <FontAwesomeIcon
+              className="ranking-table__trend--stale"
+              icon={faGripLines}
+            />
+          </Link>
         </td>
       )}
       {trend === 1 && (
         <td>
-          <FontAwesomeIcon
-            className="ranking-table__trend--up"
-            icon={faChevronUp}
-          />
+          <Link className="ranking-table__link" to={`/player/${id}`}>
+            <FontAwesomeIcon
+              className="ranking-table__trend--up"
+              icon={faChevronUp}
+            />
+          </Link>
         </td>
       )}
     </tr>

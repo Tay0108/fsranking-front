@@ -22,7 +22,8 @@ export function RankingTable({ entries }) {
           }
           return (
             <RankingTableEntry
-              key={player.place}
+              key={player.id}
+              id={player.id}
               place={player.place}
               name={`${player.firstName} ${player.lastName}`}
               age={new Date().getFullYear() - player.birthYear}

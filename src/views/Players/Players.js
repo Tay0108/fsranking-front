@@ -25,6 +25,8 @@ export function Players() {
         <ul className="players">
           {players.map((player) => (
             <PlayerCard
+              key={player.id}
+              id={player.id}
               name={`${player.firstName} ${player.lastName}`}
               nickname={player.nickname}
               age={new Date().getFullYear() - player.birthYear}
