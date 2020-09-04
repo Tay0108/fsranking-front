@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { PageHeader } from "../../components/PageHeader/PageHeader";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useHistory } from "react-router-dom";
+import { NavLink, Route, Switch, useHistory } from "react-router-dom";
 import {
   faInstagram,
   faFacebook,
@@ -10,6 +10,8 @@ import {
 
 import "./player.scss";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { TournamentTable } from "../../components/TournamentTable/TournamentTable";
+import { PlayerHistoryTable } from "../../components/PlayerHistoryTable/PlayerHistoryTable";
 
 export function Player(props) {
   const [player, setPlayer] = useState(null);
@@ -41,10 +43,11 @@ export function Player(props) {
           </div>
           <div className="player__info">
             <header className="player__header">
-              <button className="player__back-arrow" onClick={() => history.goBack()}>
-              <FontAwesomeIcon
-                icon={faArrowLeft}
-              />
+              <button
+                className="player__back-arrow"
+                onClick={() => history.goBack()}
+              >
+                <FontAwesomeIcon icon={faArrowLeft} />
               </button>
               <img
                 src={`/img/flag/${player.nationality.abbreviation}.svg`}
@@ -71,21 +74,51 @@ export function Player(props) {
               </li>
             </ul>
           </div>
-          <section className="player__statistics">
-            <h3 className="statistics__title">Statystyki</h3>
-            <ul className="statistics__list">
-              <li>
-                <span className="statistics__number">56</span> Startów
-              </li>
-              <li>
-                <span className="statistics__number">35</span> Podium
-              </li>
-              <li>
-                <span className="statistics__number">15</span> Wygranych
-              </li>
-            </ul>
-          </section>
-          <section className="player__charts"></section>
+          <nav className="player-nav">
+            <NavLink
+              className="player-nav__link"
+              activeClassName="player-nav__link--active"
+              to={`/player/${player.id}/statistics`}
+            >
+              Statystyki
+            </NavLink>
+            <NavLink
+              className="player-nav__link"
+              activeClassName="player-nav__link--active"
+              to={`/player/${player.id}/history`}
+            >
+              Historia startów
+            </NavLink>
+            <NavLink
+              className="player-nav__link"
+              activeClassName="player-nav__link--active"
+              to={`/player/${player.id}/about`}
+            >
+              O zawodniku
+            </NavLink>
+          </nav>
+          <Switch>
+            <Route path="/player/:id/statistics">
+              <section className="player__statistics">
+                <ul className="statistics__list">
+                  <li>
+                    <span className="statistics__number">56</span>Startów
+                  </li>
+                  <li>
+                    <span className="statistics__number">35</span>Podium
+                  </li>
+                  <li>
+                    <span className="statistics__number">15</span>Wygranych
+                  </li>
+                </ul>
+              </section>
+              <section className="player__charts"></section>
+            </Route>
+            <Route path="/player/:id/history">
+              <PlayerHistoryTable entries={[]}/>
+            </Route>
+            <Route path="/player/:id/about"></Route>
+          </Switch>
         </div>
       )}
     </>

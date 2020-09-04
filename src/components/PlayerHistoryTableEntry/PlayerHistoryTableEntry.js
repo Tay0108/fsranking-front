@@ -1,7 +1,7 @@
 import React from "react";
-import "./tournament-table-entry.scss";
+import "./player-history-table-entry.scss";
 
-export function TournamentTableEntry({ date, name, location, weight }) {
+export function PlayerHistoryTableEntry({ date, name, location, weight }) {
   return (
     <tr>
       <td>{date}</td>

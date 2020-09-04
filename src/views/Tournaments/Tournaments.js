@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./tournaments.scss";
 import { PageHeader } from "../../components/PageHeader/PageHeader";
 import { SortingButton } from "../../components/SortingButton/SortingButton";
-import { TournamentTable } from "../../components/TournamentTable/TournamentTable";
+import { TournamentsTable } from "../../components/TournamentsTable/TournamentsTable";
 import { NavLink, Route, Switch } from "react-router-dom";
 
 export function Tournaments() {
@@ -51,10 +51,10 @@ export function Tournaments() {
         </header>
         <Switch>
           <Route path="/tournaments/history">
-            <TournamentTable entries={pastTournaments} />
+            <TournamentsTable entries={pastTournaments} />
           </Route>
           <Route path="/tournaments/">
-            <TournamentTable entries={upcomingTournaments} />
+            <TournamentsTable entries={upcomingTournaments} />
           </Route>
         </Switch>
       </main>

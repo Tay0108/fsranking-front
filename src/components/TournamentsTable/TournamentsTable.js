@@ -1,10 +1,10 @@
 import React from "react";
-import "./tournament-table.scss";
-import { TournamentTableEntry } from "../TournamentTableEntry/TournamentTableEntry";
+import "./tournaments-table.scss";
+import { TournamentsTableEntry } from "../TournamentsTableEntry/TournamentsTableEntry";
 
-export function TournamentTable({ entries }) {
+export function TournamentsTable({ entries }) {
   return (
-    <table className="tournament-table">
+    <table className="tournaments-table">
       <thead>
         <tr>
           <th>Data</th>
@@ -15,7 +15,7 @@ export function TournamentTable({ entries }) {
       </thead>
       <tbody>
         {entries.map((tournament) => (
-          <TournamentTableEntry
+          <TournamentsTableEntry
             key={tournament.id}
             date={tournament.date}
             name={tournament.name}

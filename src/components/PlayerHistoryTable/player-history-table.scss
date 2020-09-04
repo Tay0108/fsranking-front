@@ -1,0 +1,42 @@
+.player-history-table {
+  width: 100%;
+  background: none;
+  border-spacing: 0;
+
+  thead {
+    color: #ffffff;
+    font-family: "Gilroy-Regular", sans-serif;
+    font-weight: 300;
+    font-size: 0.8rem;
+    tr {
+      th {
+        padding: 8px;
+      }
+    }
+  }
+
+  tbody {
+    background: none;
+
+    tr {
+      td {
+        font-family: "Gilroy-Regular", sans-serif;
+        font-weight: 500;
+        padding: 8px;
+        margin: 0;
+        border: none;
+        font-size: 0.7rem;
+        text-align: center;
+      }
+    }
+
+    tr:nth-of-type(2n + 1) {
+      background-color: #ffffff;
+      color: #000000;
+    }
+    tr:nth-of-type(2n) {
+      background: transparent;
+      color: #ffffff;
+    }
+  }
+}
