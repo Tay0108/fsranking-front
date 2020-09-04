@@ -10,7 +10,6 @@ import {
 
 import "./player.scss";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { TournamentTable } from "../../components/TournamentTable/TournamentTable";
 import { PlayerHistoryTable } from "../../components/PlayerHistoryTable/PlayerHistoryTable";
 
 export function Player(props) {
