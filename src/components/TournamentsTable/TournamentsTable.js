@@ -17,6 +17,7 @@ export function TournamentsTable({ entries }) {
         {entries.map((tournament) => (
           <TournamentsTableEntry
             key={tournament.id}
+            id={tournament.id}
             date={tournament.date}
             name={tournament.name}
             location={tournament.locationId} // TODO: refactor to location name
