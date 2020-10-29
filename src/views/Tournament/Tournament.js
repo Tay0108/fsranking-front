@@ -16,7 +16,7 @@ export function Tournament(props) {
       const fetchedTournament = await request.json();
       setTournament(fetchedTournament);
     })();
-  }, []);
+  }, [id]);
 
   return (
     <>
