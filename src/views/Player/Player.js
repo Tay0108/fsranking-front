@@ -26,7 +26,7 @@ export function Player(props) {
       const fetchedPlayer = await request.json();
       setPlayer(fetchedPlayer);
     })();
-  }, []);
+  }, [id]);
 
   return (
     <>
@@ -114,7 +114,7 @@ export function Player(props) {
               <section className="player__charts"></section>
             </Route>
             <Route path="/player/:id/history">
-              <PlayerHistoryTable entries={[]}/>
+              <PlayerHistoryTable entries={player.history}/>
             </Route>
             <Route path="/player/:id/about"></Route>
           </Switch>

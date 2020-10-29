@@ -6,23 +6,30 @@ export function PlayerHistoryTable({ entries }) {
   return (
     <table className="player-history-table">
       <thead>
-      <tr>
-        <th>Data</th>
-        <th>Nazwa</th>
-        <th>Lokalizacja</th>
-        <th>Waga</th>
-      </tr>
+        <tr>
+          <th>Miejsce</th>
+          <th>Turniej</th>
+          <th>Data</th>
+          <th>Punkty</th>
+        </tr>
       </thead>
       <tbody>
-      {entries.map((tournament) => (
-        <PlayerHistoryTableEntry
-          key={tournament.id}
-          date={tournament.date}
-          name={tournament.name}
-          location={tournament.locationId} // TODO: refactor to location name
-          weight={tournament.weight}
-        />
-      ))}
+        {entries.sort().map((entry) => {
+          const id = entry.tournamentId;
+          const date = entry["tournament.date"];
+          const name = entry["tournament.name"];
+          const { place, points } = entry;
+
+          return (
+            <PlayerHistoryTableEntry
+              key={id}
+              date={date}
+              name={name}
+              place={place}
+              points={points}
+            />
+          );
+        })}
       </tbody>
     </table>
   );
