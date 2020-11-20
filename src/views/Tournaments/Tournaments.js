@@ -4,10 +4,12 @@ import { PageHeader } from "../../components/PageHeader/PageHeader";
 import { SortingButton } from "../../components/SortingButton/SortingButton";
 import { TournamentsTable } from "../../components/TournamentsTable/TournamentsTable";
 import { NavLink, Route, Switch } from "react-router-dom";
+import { PageLoader } from "../../utils/PageLoader/PageLoader";
 
 export function Tournaments() {
   const [pastTournaments, setPastTournaments] = useState([]);
   const [upcomingTournaments, setUpcomingTournaments] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     (async function fetchTournaments() {
@@ -17,6 +19,7 @@ export function Tournaments() {
       const fetchedTournaments = await request.json();
       setPastTournaments(fetchedTournaments.pastTournaments);
       setUpcomingTournaments(fetchedTournaments.upcomingTournaments);
+      setIsLoading(false);
     })();
   }, []);
 
@@ -24,6 +27,9 @@ export function Tournaments() {
     <>
       <PageHeader />
       <SortingButton />
+      {isLoading ? (
+        <PageLoader />
+      ) : (
       <main className="main-content">
         <header className="tournaments-header">
           <nav className="tournaments-nav">
@@ -57,7 +63,7 @@ export function Tournaments() {
             <TournamentsTable entries={upcomingTournaments} />
           </Route>
         </Switch>
-      </main>
+      </main>)}
     </>
   );
 }
