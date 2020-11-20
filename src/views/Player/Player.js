@@ -37,6 +37,10 @@ export function Player(props) {
               src={`/img/players/ranking-player-${player.id}.jpg`}
               alt={`${player.firstName} ${player.lastName}`}
               className="player__image"
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = "/img/players/ranking-player-0.png";
+              }}
             />
           </div>
           <div className="player__info">
