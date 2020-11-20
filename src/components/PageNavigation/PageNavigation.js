@@ -1,16 +1,35 @@
 import React, { useState } from "react";
 import "./page-navigation.scss";
-import { Link } from "react-router-dom";
+import { NavLink, Route, Switch } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 export function PageNavigation() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const navLinks = [
+    { name: "Ranking", url: "/" },
+    { name: "Zawodnicy", url: "/players" },
+    { name: "Turnieje", url: "/tournaments" }
+  ];
+
   function toggleNavigation() {
     setIsOpen(!isOpen);
     const pageHeader = document.getElementById("page-header");
     pageHeader.classList.toggle("page-header--open");
+  }
+
+  function renderNavLink(navLink) {
+    return (
+      <NavLink
+        exact
+        to={navLink.url}
+        className="page-navigation__link"
+        activeClassName="page-navigation__link--active"
+      >
+        {navLink.name}
+      </NavLink>
+    );
   }
 
   return (
@@ -23,23 +42,20 @@ export function PageNavigation() {
           >
             <FontAwesomeIcon icon={faTimes} />
           </button>
-          <Link
-            to="/"
-            className="page-navigation__link page-navigation__link--active"
-          >
-            Ranking
-          </Link>
-          <Link to="/players" className="page-navigation__link">
-            Zawodnicy
-          </Link>
-          <Link to="/tournaments" className="page-navigation__link">
-            Turnieje
-          </Link>
+          {navLinks.map((navLink) => renderNavLink(navLink))}
         </div>
       ) : (
         <>
           <h1 className="current-view-name">
-            <span>Ranking</span>
+            <span>
+              <Switch>
+                <Route exact path="/">
+                  Ranking
+                </Route>
+                <Route path="/players">Zawodnicy</Route>
+                <Route path="/tournaments">Turnieje</Route>
+              </Switch>
+            </span>
             <button
               className="page-navigation__hamburger--closed"
               onClick={toggleNavigation}
