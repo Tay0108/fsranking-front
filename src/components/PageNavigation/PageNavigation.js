@@ -52,8 +52,8 @@ export function PageNavigation() {
                 <Route exact path="/">
                   Ranking
                 </Route>
-                <Route path="/players">Zawodnicy</Route>
-                <Route path="/tournaments">Turnieje</Route>
+                <Route path={["/players", "/player"]}>Zawodnicy</Route>
+                <Route path={["/tournament", "/tournaments"]}>Turnieje</Route>
               </Switch>
             </span>
             <button
