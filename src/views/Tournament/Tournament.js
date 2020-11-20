@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import { PageHeader } from "../../components/PageHeader/PageHeader";
 
 import "./tournament.scss";
+import { PageLoader } from "../../utils/PageLoader/PageLoader";
 
 export function Tournament(props) {
   const [tournament, setTournament] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const id = props.match.params.id;
 
@@ -15,13 +17,14 @@ export function Tournament(props) {
       );
       const fetchedTournament = await request.json();
       setTournament(fetchedTournament);
+      setIsLoading(false);
     })();
   }, [id]);
 
   return (
     <>
       <PageHeader />
-      {tournament && tournament.name}
+      {isLoading ? <PageLoader /> : tournament && tournament.name}
     </>
   );
 }
