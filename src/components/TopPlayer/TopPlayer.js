@@ -10,6 +10,10 @@ export function TopPlayer({ award, player }) {
           className="top-player__image"
           src={`/img/players/ranking-player-${player.id}.jpg`}
           alt={`player ${player.id}`}
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src = "/img/players/ranking-player-0.png";
+          }}
         />
         <div className="top-player__description">
           <img

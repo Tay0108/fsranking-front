@@ -38,6 +38,10 @@ export function Player(props) {
               src={`/img/players/ranking-player-${player.id}.jpg`}
               alt={`${player.firstName} ${player.lastName}`}
               className="player__image"
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = "/img/players/ranking-player-0.png";
+              }}
             />
           </div>
           <div className="player__info">
@@ -114,7 +118,7 @@ export function Player(props) {
               <section className="player__charts"></section>
             </Route>
             <Route path="/player/:id/history">
-              <PlayerHistoryTable entries={player.history}/>
+              <PlayerHistoryTable entries={player.history} />
             </Route>
             <Route path="/player/:id/about"></Route>
           </Switch>
