@@ -23,6 +23,7 @@ export function PageNavigation() {
     return (
       <NavLink
         exact
+        key={navLink.name}
         to={navLink.url}
         className="page-navigation__link"
         activeClassName="page-navigation__link--active"
