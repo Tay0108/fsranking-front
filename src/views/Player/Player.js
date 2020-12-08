@@ -60,7 +60,7 @@ export function Player(props) {
                   className="player__flag"
                 />
               </header>
-              <span className="player__place">12. miejsce w rankingu</span>
+              <span className="player__place">{`${player.rankingPlace}. miejsce w rankingu`}</span>
               <h2 className="player__name">{`${player.firstName} ${player.lastName}`}</h2>
               <h3 className="player__nickname">{player.nickname}</h3>
               <ul className="player__details">
