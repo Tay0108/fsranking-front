@@ -1,0 +1,24 @@
+@import "../../config/_breakpoints.scss"; // TODO: change to @use
+
+.page-footer {
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 30px;
+  color: #000000; // TODO: #ff6565;
+  font-size: 0.7rem;
+  font-family: "Gilroy-Regular", sans-serif;
+  display: none;
+}
+
+/* Tablet version */
+
+@media only screen and (min-width: $tablet-breakpoint) {
+  .page-footer {
+    display: block;
+  }
+}
+
+/* Desktop version */
+
+@media only screen and (min-width: $desktop-breakpoint) {
+}

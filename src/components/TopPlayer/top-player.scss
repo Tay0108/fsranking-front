@@ -1,3 +1,5 @@
+@import "../../config/_breakpoints.scss"; // TODO: change to @use
+
 .top-player {
   position: relative;
   .top-player__image {
@@ -54,6 +56,28 @@
     }
     .top-player__ball--bronze {
       color: #a45321;
+    }
+  }
+}
+
+/* Tablet version */
+
+@media only screen and (min-width: $tablet-breakpoint) {
+  .top-player {
+    width: 225px;
+    .top-player__image {
+      width: 100%;
+    }
+  }
+}
+
+/* Desktop version */
+
+@media only screen and (min-width: $desktop-breakpoint) {
+  .top-player {
+    width: 305px;
+    .top-player__image {
+      width: 100%;
     }
   }
 }

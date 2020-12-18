@@ -1,3 +1,5 @@
+@import "../../config/_breakpoints.scss"; // TODO: change to @use
+
 .main-content {
   .top-players-list {
     list-style: none;
@@ -11,4 +13,28 @@
       border-top: 4px solid #ff6565;
     }
   }
+}
+
+/* Tablet version */
+
+@media only screen and (min-width: $tablet-breakpoint) {
+  .main-content {
+    .top-players-list {
+      display: flex;
+      justify-content: space-between;
+      li {
+        border: none;
+      }
+      li:first-of-type {
+        border: none;
+      }
+
+      margin-bottom: 50px;
+    }
+  }
+}
+
+/* Desktop version */
+
+@media only screen and (min-width: $desktop-breakpoint) {
 }

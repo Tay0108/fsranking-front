@@ -5,6 +5,7 @@ import { SortingButton } from "../../components/SortingButton/SortingButton";
 import { TopPlayer } from "../../components/TopPlayer/TopPlayer";
 import { RankingTable } from "../../components/RankingTable/RankingTable";
 import { PageLoader } from "../../utils/PageLoader/PageLoader";
+import { PageFooter } from "../../components/PageFooter/PageFooter";
 
 export function Ranking() {
   const [ranking, setRanking] = useState(null);
@@ -47,6 +48,7 @@ export function Ranking() {
           </main>
         </>
       )}
+      <PageFooter /> {/* TODO: turn off on mobile */}
     </>
   );
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css";
+import "./App.scss";
 import "normalize.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Ranking } from "./views/Ranking/Ranking";
