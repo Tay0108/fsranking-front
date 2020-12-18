@@ -1,0 +1,39 @@
+@import "config/_breakpoints.scss"; // TODO: change to @use
+
+html {
+  min-height: 100%;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(96, 44, 44, 1) 60%,
+    rgba(255, 101, 101, 1) 100%
+  );
+  background-repeat: no-repeat;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 18px;
+}
+
+/* Tablet version */
+
+@media only screen and (min-width: $tablet-breakpoint) {
+  body {
+    background-position: center;
+    background-size: cover;
+    background-image: url("/img/page-background.png");
+    padding-bottom: 20px;
+  }
+}
+
+/* Desktop version */
+
+@media only screen and (min-width: $desktop-breakpoint) {
+}

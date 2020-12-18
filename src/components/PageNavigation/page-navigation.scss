@@ -1,3 +1,5 @@
+@import '../../config/_breakpoints.scss'; // TODO: change to @use
+
 .page-navigation {
   display: flex;
   align-items: flex-start;
@@ -49,4 +51,16 @@
     top: 0;
     right: 0;
   }
+}
+
+/* Tablet version */
+
+@media only screen and (min-width: $tablet-breakpoint) {
+
+}
+
+  /* Desktop version */
+
+@media only screen and (min-width: $desktop-breakpoint) {
+
 }

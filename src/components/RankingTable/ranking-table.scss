@@ -1,3 +1,5 @@
+@import "../../config/_breakpoints.scss"; // TODO: change to @use
+
 .ranking-table {
   width: 100%;
   background: none;
@@ -51,4 +53,30 @@
       color: #ffffff;
     }
   }
+}
+
+/* Tablet version */
+
+@media only screen and (min-width: $tablet-breakpoint) {
+  .ranking-table {
+    thead {
+      background-color: #ff6565;
+    }
+
+    tbody {
+      tr:nth-of-type(2n + 1) {
+        background-color: #ffffff;
+        color: #000000;
+      }
+      tr:nth-of-type(2n) {
+        background: #f9f9f9;
+        color: #000000;
+      }
+    }
+  }
+}
+
+/* Desktop version */
+
+@media only screen and (min-width: $desktop-breakpoint) {
 }
