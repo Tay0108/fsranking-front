@@ -44,6 +44,8 @@
 @media only screen and (min-width: $tablet-breakpoint) {
   body {
     background-image: url("/img/page-background.png");
+    min-height: 100vh;
+    box-sizing: border-box;
   }
   .App {
     width: 700px;

@@ -5,6 +5,7 @@ import { SortingButton } from "../../components/SortingButton/SortingButton";
 import { TournamentsTable } from "../../components/TournamentsTable/TournamentsTable";
 import { NavLink, Route, Switch } from "react-router-dom";
 import { PageLoader } from "../../utils/PageLoader/PageLoader";
+import { PageFooter } from "../../components/PageFooter/PageFooter";
 
 export function Tournaments() {
   const [pastTournaments, setPastTournaments] = useState([]);
@@ -30,40 +31,42 @@ export function Tournaments() {
       {isLoading ? (
         <PageLoader />
       ) : (
-      <main className="main-content">
-        <header className="tournaments-header">
-          <nav className="tournaments-nav">
-            <NavLink
-              exact={true}
-              activeClassName="tournaments-nav__link--active"
-              to="/tournaments"
-              className="tournaments-nav__link"
-            >
-              Nadchodzące
-            </NavLink>
-            <NavLink
-              activeClassName="tournaments-nav__link--active"
-              to="/tournaments/history"
-              className="tournaments-nav__link"
-            >
-              Historia
-            </NavLink>
-          </nav>
-          <p className="tournaments-header__info">
-            Aktualnie zaplanowanych jest{" "}
-            <span className="tournaments-count">20</span> turniejów w{" "}
-            <span className="locations-count">15</span> miastach.
-          </p>
-        </header>
-        <Switch>
-          <Route path="/tournaments/history">
-            <TournamentsTable entries={pastTournaments} />
-          </Route>
-          <Route path="/tournaments/">
-            <TournamentsTable entries={upcomingTournaments} />
-          </Route>
-        </Switch>
-      </main>)}
+        <main className="main-content">
+          <header className="tournaments-header">
+            <nav className="tournaments-nav">
+              <NavLink
+                exact={true}
+                activeClassName="tournaments-nav__link--active"
+                to="/tournaments"
+                className="tournaments-nav__link"
+              >
+                Nadchodzące
+              </NavLink>
+              <NavLink
+                activeClassName="tournaments-nav__link--active"
+                to="/tournaments/history"
+                className="tournaments-nav__link"
+              >
+                Historia
+              </NavLink>
+            </nav>
+            <p className="tournaments-header__info">
+              Aktualnie zaplanowanych jest{" "}
+              <span className="tournaments-count">20</span> turniejów w{" "}
+              <span className="locations-count">15</span> miastach.
+            </p>
+          </header>
+          <Switch>
+            <Route path="/tournaments/history">
+              <TournamentsTable entries={pastTournaments} />
+            </Route>
+            <Route path="/tournaments/">
+              <TournamentsTable entries={upcomingTournaments} />
+            </Route>
+          </Switch>
+        </main>
+      )}
+      <PageFooter /> {/* TODO: turn off on mobile */}
     </>
   );
 }

@@ -1,5 +1,22 @@
+@import "../../config/_breakpoints.scss"; // TODO: change to @use
+
 .page-logo {
   .page-logo__image {
     height: 56px;
   }
+}
+
+/* Tablet version */
+
+@media only screen and (min-width: $tablet-breakpoint) {
+  .page-logo {
+    .page-logo__image {
+      height: 96px;
+    }
+  }
+}
+
+/* Desktop version */
+
+@media only screen and (min-width: $desktop-breakpoint) {
 }

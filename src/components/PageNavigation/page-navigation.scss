@@ -1,66 +1,27 @@
-@import '../../config/_breakpoints.scss'; // TODO: change to @use
+@import "../../config/_breakpoints.scss"; // TODO: change to @use
 
 .page-navigation {
   display: flex;
-  align-items: flex-start;
-  min-width: 100px;
-  margin-top: 21px;
-  .current-view-name {
-    font-family: "Gilroy-Regular", "sans-serif";
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  height: 96px;
+
+  .page-navigation__link {
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 700;
+    font-family: "Gilroy-Regular", "sans-serif";
+    color: #ffffff;
+    text-decoration: none;
+    margin-right: 15px;
+  }
+
+  .page-navigation__link--active {
     color: #ff6565;
-    text-transform: uppercase;
-    position: relative;
-    margin: 0;
-    width: 100%;
-    span {
-      margin: 0 21px 0 0;
-      display: block;
-    }
   }
 
-  .page-navigation__inner-nav {
-    position: relative;
-    margin-top: 0;
-    width: 100%;
-    .page-navigation__link {
-      font-size: 1rem;
-      font-weight: 500;
-      text-transform: uppercase;
-      font-family: "Gilroy-Regular", "sans-serif";
-      color: #ffffff;
-      text-decoration: none;
-      display: block;
-      margin-bottom: 5px;
-    }
-    .page-navigation__link--active {
-      color: #ff6565;
-      margin-right: 21px;
-    }
-  }
-  .page-navigation__hamburger--open,
-  .page-navigation__hamburger--closed {
+  .page-navigation__link:hover {
     color: #ff6565;
-    cursor: pointer;
-    background: none;
-    border: none;
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    top: 0;
-    right: 0;
   }
-}
-
-/* Tablet version */
-
-@media only screen and (min-width: $tablet-breakpoint) {
-
-}
-
-  /* Desktop version */
-
-@media only screen and (min-width: $desktop-breakpoint) {
-
 }

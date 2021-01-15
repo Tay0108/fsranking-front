@@ -4,10 +4,11 @@
   text-align: center;
   margin-top: 100px;
   margin-bottom: 30px;
-  color: #000000; // TODO: #ff6565;
+  color: #ff6565;
   font-size: 0.7rem;
   font-family: "Gilroy-Regular", sans-serif;
   display: none;
+  text-shadow: 4px 4px 8px rgba(0, 0, 0, 1), 4px -4px 8px rgba(0, 0, 0, 1);
 }
 
 /* Tablet version */

@@ -1,3 +1,5 @@
+@import "../../config/_breakpoints.scss"; // TODO: change to @use
+
 .page-header {
   padding: 26px 21px 40px 21px;
   display: flex;
@@ -10,4 +12,20 @@
   background-size: 130px auto;
   background-position: right;
   background-repeat: no-repeat;
+}
+
+/* Tablet version */
+
+@media only screen and (min-width: $tablet-breakpoint) {
+  .page-header {
+  }
+
+  .page-header--open {
+    background: none;
+  }
+}
+
+/* Desktop version */
+
+@media only screen and (min-width: $desktop-breakpoint) {
 }
