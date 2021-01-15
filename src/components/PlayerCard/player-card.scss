@@ -1,42 +1,81 @@
+@import "../../config/_breakpoints.scss"; // TODO: change to @use
+
 .player-card {
   position: relative;
   height: 200px;
   overflow: hidden;
   margin-bottom: 15px;
 
-  .player-card__image {
-    width: 100%;
-    position: absolute;
-    top: -50%;
-  }
-
-  .player-card__info {
-    color: #ffffff;
-    position: absolute;
-    margin: 0;
-    bottom: 12px;
-    left: 12px;
-
-    .info__title {
-      font-size: 0.9rem;
+  .player-card__link {
+    display: block;
+    height: 100%;
+    .player-card__image {
+      width: 100%;
+      position: absolute;
+      top: -50%;
     }
 
-    .info__definition {
-      font-size: 1.7rem;
-      padding: 0;
-      margin: 0 0 5px 0;
-    }
-
-    .info__definition:last-child {
+    .player-card__info {
+      color: #ffffff;
+      position: absolute;
       margin: 0;
+      bottom: 12px;
+      left: 12px;
+
+      .info__title {
+        font-size: 0.9rem;
+      }
+
+      .info__definition {
+        font-size: 1.7rem;
+        padding: 0;
+        margin: 0 0 5px 0;
+      }
+
+      .info__definition:last-child {
+        margin: 0;
+      }
+    }
+
+    .player-card__arrow {
+      font-size: 1.7rem;
+      color: #ffffff;
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
     }
   }
+}
 
-  .player-card__arrow {
-    font-size: 1.7rem;
-    color: #ffffff;
-    position: absolute;
-    bottom: 12px;
-    right: 12px;
+/* Tablet version */
+
+@media only screen and (min-width: $tablet-breakpoint) {
+  .player-card {
+    flex-basis: 33.333333%;
+
+    .player-card__image {
+    }
+
+    .player-card__info {
+      .info__title {
+        font-size: 0.7rem;
+      }
+
+      .info__definition {
+        font-size: 1.4rem;
+      }
+
+      .info__definition:last-child {
+      }
+    }
+
+    .player-card__arrow {
+      font-size: 1.4rem;
+    }
   }
+}
+
+/* Desktop version */
+
+@media only screen and (min-width: $desktop-breakpoint) {
 }

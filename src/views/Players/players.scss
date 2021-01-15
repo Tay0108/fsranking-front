@@ -1,5 +1,23 @@
+@import "../../config/_breakpoints.scss"; // TODO: change to @use
+
 .players {
   list-style: none;
   margin: 0;
   padding: 0;
 }
+
+/* Tablet version */
+
+@media only screen and (min-width: $tablet-breakpoint) {
+  .players {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+/* Desktop version */
+
+@media only screen and (min-width: $desktop-breakpoint) {
+}
+
