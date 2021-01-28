@@ -9,7 +9,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 
 import "./player.scss";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import { PlayerHistoryTable } from "../../components/PlayerHistoryTable/PlayerHistoryTable";
 import { PageLoader } from "../../utils/PageLoader/PageLoader";
 
@@ -52,7 +52,7 @@ export function Player(props) {
             <div className="player__info">
               <header className="player__header">
                 <Link className="player__back-arrow" to="/players">
-                  <FontAwesomeIcon icon={faArrowLeft} />
+                  <FontAwesomeIcon icon={faAngleLeft} />
                 </Link>
                 <img
                   src={`/img/flag/${player.nationality.abbreviation}.svg`}
