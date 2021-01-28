@@ -46,6 +46,7 @@
     background-image: url("/img/page-background.png");
     min-height: 100vh;
     box-sizing: border-box;
+    background-attachment: fixed;
   }
   .App {
     width: 700px;

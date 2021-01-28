@@ -27,6 +27,7 @@ export function PlayerHistoryTable({ entries }) {
               name={name}
               place={place}
               points={points}
+              tournamentId={id}
             />
           );
         })}
