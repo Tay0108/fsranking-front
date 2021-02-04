@@ -33,16 +33,16 @@ export function Ranking() {
               <>
                 <ul className="top-players-list">
                   <li>
-                    <TopPlayer award="gold" player={ranking[0]} />
+                    <TopPlayer award="gold" player={ranking.Male.Battle[0]} />
                   </li>
                   <li>
-                    <TopPlayer award="silver" player={ranking[1]} />
+                    <TopPlayer award="silver" player={ranking.Male.Battle[1]} />
                   </li>
                   <li>
-                    <TopPlayer award="bronze" player={ranking[2]} />
+                    <TopPlayer award="bronze" player={ranking.Male.Battle[2]} />
                   </li>
                 </ul>
-                <RankingTable entries={ranking} />
+                <RankingTable entries={ranking.Male.Battle} />
               </>
             )}
           </main>
