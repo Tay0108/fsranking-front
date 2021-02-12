@@ -4,7 +4,7 @@ import { PageHeader } from "../../components/PageHeader/PageHeader";
 import { SortingButton } from "../../components/SortingButton/SortingButton";
 import { TopPlayer } from "../../components/TopPlayer/TopPlayer";
 import { RankingTable } from "../../components/RankingTable/RankingTable";
-import { PageLoader } from "../../utils/PageLoader/PageLoader";
+import { PageLoader } from "../../components/PageLoader/PageLoader";
 import { PageFooter } from "../../components/PageFooter/PageFooter";
 
 export function Ranking() {

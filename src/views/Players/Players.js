@@ -4,7 +4,7 @@ import { PageHeader } from "../../components/PageHeader/PageHeader";
 import { SortingButton } from "../../components/SortingButton/SortingButton";
 import { SearchBar } from "../../components/SearchBar/SearchBar";
 import { PlayerCard } from "../../components/PlayerCard/PlayerCard";
-import { PageLoader } from "../../utils/PageLoader/PageLoader";
+import { PageLoader } from "../../components/PageLoader/PageLoader";
 import { PageFooter } from "../../components/PageFooter/PageFooter";
 
 export function Players() {

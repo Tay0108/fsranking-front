@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { PageHeader } from "../../components/PageHeader/PageHeader";
 
 import "./tournament.scss";
-import { PageLoader } from "../../utils/PageLoader/PageLoader";
+import { PageLoader } from "../../components/PageLoader/PageLoader";
 import { Link, NavLink, Route, Switch } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";

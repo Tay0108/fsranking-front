@@ -11,7 +11,7 @@ import {
 import "./player.scss";
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import { PlayerHistoryTable } from "../../components/PlayerHistoryTable/PlayerHistoryTable";
-import { PageLoader } from "../../utils/PageLoader/PageLoader";
+import { PageLoader } from "../../components/PageLoader/PageLoader";
 
 export function Player(props) {
   const [player, setPlayer] = useState(null);

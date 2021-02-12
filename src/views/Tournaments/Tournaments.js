@@ -4,7 +4,7 @@ import { PageHeader } from "../../components/PageHeader/PageHeader";
 import { SortingButton } from "../../components/SortingButton/SortingButton";
 import { TournamentsTable } from "../../components/TournamentsTable/TournamentsTable";
 import { NavLink, Route, Switch } from "react-router-dom";
-import { PageLoader } from "../../utils/PageLoader/PageLoader";
+import { PageLoader } from "../../components/PageLoader/PageLoader";
 import { PageFooter } from "../../components/PageFooter/PageFooter";
 
 export function Tournaments() {
