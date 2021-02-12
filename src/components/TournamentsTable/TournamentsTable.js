@@ -20,8 +20,8 @@ export function TournamentsTable({ entries }) {
             id={tournament.id}
             date={tournament.date}
             name={tournament.name}
-            location={tournament.locationId} // TODO: refactor to location name
-            weight={tournament.weight}
+            location={tournament.location.name}
+            weight={tournament["tournament_tier"].weight}
           />
         ))}
       </tbody>
