@@ -35,7 +35,7 @@ export function Player(props) {
 
     for (const category in player.statistics) {
       statistics.push(
-        <li>
+        <li key={category}>
           <h3 className="statistics__category-title">{category}</h3>
           <ul className="statistics__category-list">
             <li>
