@@ -10,7 +10,7 @@ export function TournamentsTable({ entries }) {
           <th>Data</th>
           <th>Nazwa</th>
           <th>Lokalizacja</th>
-          <th>Waga</th>
+          <th>Cykl zawodów</th>
         </tr>
       </thead>
       <tbody>
@@ -21,7 +21,7 @@ export function TournamentsTable({ entries }) {
             date={tournament.date}
             name={tournament.name}
             location={tournament.location.name}
-            weight={tournament["tournament_tier"].weight}
+            tier={tournament["tournament_tier"].name}
           />
         ))}
       </tbody>
