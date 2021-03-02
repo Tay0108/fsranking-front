@@ -3,8 +3,6 @@ import "./player-history-table-entry.scss";
 import { Link } from "react-router-dom";
 import { mapPlaceToDisplayValue } from "../../utils/placeDisplay";
 
-
-
 export function PlayerHistoryTableEntry({ date, name, place, points, tournamentId }) {
 
   const placeToDisplay = mapPlaceToDisplayValue(place);
