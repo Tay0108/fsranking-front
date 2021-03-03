@@ -1,4 +1,9 @@
-.sorting-button {
+.ranking-filters {
+  padding: 0 21px;
+  box-sizing: border-box;
+}
+
+.ranking-filters-button {
   background-color: #ff6565;
   border-radius: 8px;
   border: none;
@@ -11,8 +16,8 @@
   display: flex;
   align-items: center;
   cursor: pointer;
-
-  .sorting-button__arrow {
+  
+  .ranking-filters-button__arrow {
     margin-left: 10px;
   }
 }

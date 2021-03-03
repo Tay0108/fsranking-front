@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./tournaments.scss";
 import { PageHeader } from "../../components/PageHeader/PageHeader";
-import { SortingButton } from "../../components/SortingButton/SortingButton";
+import { RankingFilters } from "../../components/RankingFilters/RankingFilters";
 import { TournamentsTable } from "../../components/TournamentsTable/TournamentsTable";
 import { NavLink, Route, Switch } from "react-router-dom";
 import { PageLoader } from "../../components/PageLoader/PageLoader";
@@ -35,7 +35,7 @@ export function Tournaments() {
   return (
     <>
       <PageHeader />
-      <SortingButton />
+      <RankingFilters />
       {isLoading ? (
         <PageLoader />
       ) : (
