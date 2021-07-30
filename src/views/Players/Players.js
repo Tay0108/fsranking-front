@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./players.scss";
 import { PageHeader } from "../../components/PageHeader/PageHeader";
-import { SortingButton } from "../../components/SortingButton/SortingButton";
+import { RankingFilters } from "../../components/RankingFilters/RankingFilters";
 import { SearchBar } from "../../components/SearchBar/SearchBar";
 import { PlayerCard } from "../../components/PlayerCard/PlayerCard";
 import { PageLoader } from "../../components/PageLoader/PageLoader";
@@ -23,26 +23,26 @@ export function Players() {
   return (
     <>
       <PageHeader />
-      <SortingButton />
+      <RankingFilters />
       {isLoading ? (
         <PageLoader />
       ) : (
-        <main className="main-content">
-          <SearchBar />
-          <ul className="players">
-            {players.map((player) => (
-              <PlayerCard
-                key={player.id}
-                id={player.id}
-                name={`${player.firstName} ${player.lastName}`}
-                nickname={player.nickname}
-                age={new Date().getFullYear() - player.birthYear}
-                image={`img/players/ranking-player-${0}.jpg`}
-              />
-            ))}
-          </ul>
-        </main>
-      )}
+          <main className="main-content">
+            <SearchBar />
+            <ul className="players">
+              {players.map((player) => (
+                <PlayerCard
+                  key={player.id}
+                  id={player.id}
+                  name={`${player.firstName} ${player.lastName}`}
+                  nickname={player.nickname}
+                  age={new Date().getFullYear() - player.birthYear}
+                  image={`img/players/ranking-player-${0}.jpg`}
+                />
+              ))}
+            </ul>
+          </main>
+        )}
       <PageFooter /> {/* TODO: turn off on mobile */}
     </>
   );
