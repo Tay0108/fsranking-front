@@ -87,17 +87,31 @@ export function Tournament(props) {
                 </NavLink>
               </nav>
               <Switch>
-                <Route path="/tournament/:id">
-                  <TournamentResultsTable
-                    entries={tournament.categories[0].results}
-                  />
-                  {/* TODO: Hardcoded to male battles for now */}
-                </Route>
-                <Route exact path="/tournament/:id/starting-list">
+                <Route path="/tournament/:id/starting-list">
                   <div className="tournament__description">
                     {tournament.description}
                   </div>
                 </Route>
+                <Route path="/tournament/:id">
+                  <nav className="tournament__category-nav">
+                    {tournament.categories.map(category => {
+                      return <NavLink
+                        className="category-nav__link"
+                        to={`/tournament/${tournament.id}/results/${category.gender}/${category.name}`}>{category.name}
+                        <span className="link__subtitle">{category.gender}</span></NavLink>
+                    })
+                    }
+                  </nav>
+                  <Switch>
+                    <Route path="/tournament/:id/results/:gender/:category">
+
+                      <TournamentResultsTable
+                        entries={tournament.categories.find(category => category.name === 'Battle' && category.gender === 'Male').results}
+                      />
+                    </Route>
+                  </Switch>
+                </Route>
+
               </Switch>
             </div>
           </div>

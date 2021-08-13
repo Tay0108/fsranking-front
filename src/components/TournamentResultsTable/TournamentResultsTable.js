@@ -21,6 +21,7 @@ export function TournamentResultsTable({ entries }) {
           return (
             <TournamentResultsTableEntry
               key={id}
+              playerId={id}
               name={name}
               place={place}
               points={points}
